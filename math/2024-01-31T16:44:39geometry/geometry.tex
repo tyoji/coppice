@@ -1,0 +1,844 @@
+\documentclass[12pt,b5paper]{ltjsarticle}
+
+%\usepackage[margin=15truemm, top=5truemm, bottom=5truemm]{geometry}
+%\usepackage[margin=10truemm,left=15truemm]{geometry}
+\usepackage[margin=10truemm]{geometry}
+
+\usepackage{amsmath,amssymb}
+%\pagestyle{headings}
+\pagestyle{empty}
+
+%\usepackage{listings,url}
+%\renewcommand{\theenumi}{(\arabic{enumi})}
+
+\usepackage{graphicx}
+
+\usepackage{tikz}
+%\usetikzlibrary {arrows.meta}
+\usetikzlibrary{intersections,calc,arrows.meta}
+
+%\usepackage{wrapfig}
+%\usepackage{bm}
+
+% ルビを振る
+%\usepackage{luatexja-ruby}	% required for `\ruby'
+
+%% 核Ker 像Im Hom を定義
+%\newcommand{\Img}{\mathop{\mathrm{Im}}\nolimits}
+%\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+%\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+
+%\DeclareMathOperator{\Rot}{rot}
+%\DeclareMathOperator{\Div}{div}
+%\DeclareMathOperator{\Grad}{grad}
+%\DeclareMathOperator{\arcsinh}{arcsinh}
+%\DeclareMathOperator{\arccosh}{arccosh}
+%\DeclareMathOperator{\arctanh}{arctanh}
+
+
+
+%\usepackage{listings,url}
+%
+%\lstset{
+%%プログラム言語(複数の言語に対応，C,C++も可)
+%  language = Python,
+%%  language = Lisp,
+%%  language = C,
+%  %背景色と透過度
+%  %backgroundcolor={\color[gray]{.90}},
+%  %枠外に行った時の自動改行
+%  breaklines = true,
+%  %自動改行後のインデント量(デフォルトでは20[pt])
+%  breakindent = 10pt,
+%  %標準の書体
+%%  basicstyle = \ttfamily\scriptsize,
+%  basicstyle = \ttfamily,
+%  %コメントの書体
+%%  commentstyle = {\itshape \color[cmyk]{1,0.4,1,0}},
+%  %関数名等の色の設定
+%  classoffset = 0,
+%  %キーワード(int, ifなど)の書体
+%%  keywordstyle = {\bfseries \color[cmyk]{0,1,0,0}},
+%  %表示する文字の書体
+%  %stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+%  %枠 "t"は上に線を記載, "T"は上に二重線を記載
+%  %他オプション：leftline，topline，bottomline，lines，single，shadowbox
+%  frame = TBrl,
+%  %frameまでの間隔(行番号とプログラムの間)
+%  framesep = 5pt,
+%  %行番号の位置
+%  numbers = left,
+%  %行番号の間隔
+%  stepnumber = 1,
+%  %行番号の書体
+%%  numberstyle = \tiny,
+%  %タブの大きさ
+%  tabsize = 4,
+%  %キャプションの場所("tb"ならば上下両方に記載)
+%  captionpos = t
+%}
+
+
+
+\begin{document}
+
+\hrulefill
+
+\begin{equation}
+ D^{2} = \{z\in\mathbb{C} \mid \lvert z \rvert <1\}
+\end{equation}
+
+\begin{equation}
+ \mathbb{H} = \{ \tau \in \mathbb{C} \mid \mathrm{Im}\tau > 0 \}
+\end{equation}
+
+\begin{equation}
+ \mathbf{e}_{n}(z) = \exp{(2\pi i n z)}
+\end{equation}
+
+\hrulefill
+
+\textbf{等角写像}
+
+写像
+$F:D^{2} \subset \mathbb{C} \to\mathbb{R}^{2}$
+が次の式を満たすとき等角写像という。
+\begin{equation}
+ \lvert F_{x} \rvert
+= \lvert F_{y} \rvert
+,\quad
+(F_{x},F_{y})=0
+\end{equation}
+
+\hrulefill
+
+テータ関数
+\begin{gather}
+ \theta(z,\tau)
+  = \sum_{n\in\mathbb{Z}} \exp{(\pi i n^{2} \tau + 2\pi inz)}
+  = \sum_{n\in\mathbb{Z}} \exp{(\pi i n^{2} \tau)} \mathbf{e}_{n}(z)
+ \\
+ \theta(z+a\tau+b,\tau)
+ = \exp{(-\pi ia^{2}\tau-2\pi iaz)\theta(z,\tau)}
+ ,\quad a,b\in\mathbb{Z}
+ \\
+ \theta(z+1,\tau)=\theta(z,\tau)
+ ,\quad
+ \theta(z+\tau,\tau)=\exp{(-\pi i\tau-2\pi iz)\theta(z,\tau)}
+\end{gather}
+
+\hrulefill
+
+$\mathbb{C}\times \mathbb{H}$上の正則関数全体の集合を$\mathcal{H}$とする。
+$\mathcal{H}$は$\mathbb{C}$上の線形空間である。
+
+$a,b\in\mathbb{R}$とする。
+$\mathcal{H}$から$\mathcal{H}$への線形写像$S_{b},T_{a}$を次のように定義する。
+\begin{equation}
+ S_{b}f(z,\tau) = f(z+b,\tau)
+  ,\quad
+ T_{a}f(z,\tau)
+ = \exp{(\pi ia^{2}\tau + 2\pi i az)} f(z+a\tau,\tau)
+\end{equation}
+
+\hrulefill
+
+\textbf{指標付きテータ関数}
+
+$a,b\in \frac{1}{2}\mathbb{Z}$に対して
+$\theta_{a,b}$を次のように定める。
+\begin{equation}
+ \theta_{a,b}
+  = S_{b}(T_{a}\theta)
+  = \exp{(2\pi i ab)} T_{a}(S_{b}\theta)
+\end{equation}
+
+\begin{equation}
+ \theta_{a,b}(z,\tau)
+  = \sum_{n\in\mathbb{Z}}\exp{(
+  \pi i (n+a)^{2}\tau + 2\pi i (n+a)(z+b)
+  )}
+\end{equation}
+
+性質
+
+ $a,b,a^{\prime},b^{\prime}\in\frac{1}{2}\mathbb{Z}$
+\begin{gather}
+ \theta_{0,0}(z,\tau)
+ = \theta(z,\tau)
+ \\
+ S_{b^{\prime}}\theta_{a,b}(z,\tau)
+ = \theta_{a,b} (z+b^{\prime},\tau)
+ = \theta_{a,b+b^{\prime}} (z,\tau)
+ \\
+ T_{a^{\prime}} \theta_{a,b}(z,\tau)
+ =\exp{(\pi i {a^{\prime}}^{2} \tau +2\pi ia^{\prime}z)}
+ \theta_{a,b}(z+a^{\prime}\tau,\tau)
+ = \exp{(-2\pi i a^{\prime}b)} \theta_{a+a^{\prime},b}(z,\tau)
+ \\
+ \theta_{a+p,b+q}(z,\tau) = \exp{(2\pi iaq)} \theta_{a,b}(z,\tau) \quad p,q \in\mathbb{Z}
+ \\
+ \theta_{a,b}(z+2,\tau) = \theta_{a,b}(z,\tau)\\
+ \theta_{a,b}(z+2\tau,\tau) = \exp{(-4\pi i(\tau+z))}\theta_{a,b}(z,\tau)
+\end{gather}
+
+\hrulefill
+
+\begin{description}
+ \item[第1回]
+ \begin{description}
+  \item[問題 1.2.1.]
+             $(x,y)$について
+            複素数値関数$f$を
+            $f=a+bi$と表す。
+            ただし、$a,b$は実数値関数とする。
+            $\bar{f}$が
+            $z=x+yi$についての
+            正則関数とすると
+            $F$は等角写像となることを示せ。
+
+\dotfill
+
+
+             $\bar{f}=a-bi$であるので、
+             写像
+             $F:D^{2}\to\mathbb{R}^{2}$
+             は
+             $F=\begin{pmatrix}a\\-b \end{pmatrix}$
+             となる。
+
+             Cauchy-Riemann 方程式から
+             $a_{x}=-b_{y},\; a_{y}=b_{x}$
+             である。
+
+             \begin{gather}
+              \lvert F_{x} \rvert
+              = \lvert a_{x}^{2} + b_{x}^{2} \rvert
+              = \lvert a_{y}^{2} + b_{y}^{2} \rvert
+              = \lvert F_{y} \rvert
+              \\
+              (F_{x},F_{y})
+              = a_{x}a_{y}+(-b_{x})(-b_{y})
+              = a_{x}a_{y}+(-a_{y})(a_{x})
+              = 0
+             \end{gather}
+
+             これにより
+             $F$は等角写像である。
+
+\hrulefill
+
+
+ \item[問題 1.2.2.]
+            $F_{x}$が$F_{y}$を$\pi/2$回転したベクトルとなるとき、
+            $\bar{f}=a-bi$は
+            $z=x+yi$についての
+            正則関数となることを示せ。
+
+\dotfill
+
+
+\begin{equation}
+ F=\begin{pmatrix} a \\ b \end{pmatrix}
+ ,\quad
+ F_{x}=\begin{pmatrix} a_{x} \\ b_{x} \end{pmatrix}
+ ,\quad
+ F_{y}=\begin{pmatrix} a_{y} \\ b_{y} \end{pmatrix}
+\end{equation}
+
+            $F_{x}$が$F_{y}$を$\pi/2$回転したベクトルとなる為、
+            次の式が成り立つ。
+            \begin{gather}
+             F_{x}=
+              \begin{pmatrix}
+              \cos{\frac{\pi}{2}} & -\sin{\frac{\pi}{2}} \\
+              \sin{\frac{\pi}{2}} & \cos{\frac{\pi}{2}}
+              \end{pmatrix}
+              F_{y}
+             \\
+             a_{x}=-b_{y}
+             ,\quad
+             b_{x}=a_{y}
+            \end{gather}
+
+%            直交することから$(F_{x},F_{y})=0$である。
+
+            $\bar{f}=a-bi$は
+            Cauchy-Riemann 方程式
+            を満たすので
+            $z=x+yi$について正則関数である。
+
+\hrulefill
+
+\end{description}
+
+
+ \item[第3回]
+ \begin{description}
+  \item[問題 1.1.1.]
+
+             関数$f$を次の様に定める。
+             \begin{equation}
+              f(z,\tau)
+               = \theta(-z +\frac{1}{2}\tau - \frac{b}{2\pi i},\tau)
+             \end{equation}
+             
+             この時、次の式を満たすことを示せ。
+             \begin{equation}
+              f(z+1,\tau) = f(z,\tau)
+               ,\quad
+               f(z+\tau,\tau)
+               = \exp{(-2\pi iz-b)} f(z,\tau)
+             \end{equation}
+
+\dotfill
+
+             $\theta(z+1,\tau) = \theta(z,\tau)$より
+             \begin{equation}
+              f(z+1,\tau)
+               =\theta(-(z+1) +\frac{1}{2}\tau - \frac{b}{2\pi i},\tau)
+               =\theta(-z +\frac{1}{2}\tau - \frac{b}{2\pi i},\tau)
+               = f(z,\tau)
+             \end{equation}
+
+             $\theta(z+\tau,\tau)=\exp{(-\pi i\tau-2\pi iz)}\theta(z,\tau)$
+             であるので、
+             両辺に
+             $\exp{(\pi i\tau+2\pi iz)}$
+             をかけることで
+             $\exp{(\pi i\tau+2\pi iz)} \theta(z+\tau,\tau)=\theta(z,\tau)$
+             である。
+             \begin{align}
+              f(z+\tau,\tau)
+               &= \theta(-(z+\tau) +\frac{1}{2}\tau - \frac{b}{2\pi i},\tau)\\
+               &= \theta(-z +\frac{1}{2}\tau - \frac{b}{2\pi i} -\tau,\tau)\\
+               &= \exp{(\pi i\tau+2\pi i(-z +\frac{1}{2}\tau - \frac{b}{2\pi i} -\tau))} \theta(-z +\frac{1}{2}\tau - \frac{b}{2\pi i},\tau)\\
+              &= \exp{(-2\pi iz   -b)} f(z,\tau)
+             \end{align}
+
+\hrulefill
+
+  \item[問題 1.1.1.]
+             整数$a,b$に対し次が成り立つことを確認せよ。
+             \begin{equation}
+              T_{a}\theta(z,\tau)
+               =\theta(z,\tau)
+               ,\quad
+               S_{b}\theta(z,\tau)
+               =\theta(z,\tau)
+             \end{equation}
+
+\dotfill
+
+             $b\in\mathbb{Z}$より
+             $\theta(z+\tau,\tau)=\exp{(-\pi i\tau-2\pi iz)\theta(z,\tau)}$
+             を繰り返し行うと次の式を得る。
+             \begin{align}
+              T_{a}\theta(z,\tau)
+              &= \exp{(\pi i a^{2}\tau + 2\pi i a z)} \theta(z+a\tau,\tau)\\
+              &= \exp{(\pi i a^{2}\tau + 2\pi i a z)} \exp{(-\pi i\tau-2\pi i(z+(a-1)\tau))}\theta(z+(a-1)\tau,\tau)\\
+              &= \exp{(\pi i a^{2}\tau + 2\pi i a z)}
+              \exp{(-a\pi i\tau-2a\pi iz- 2\pi i\tau \sum_{j=1}^{a}(a-j)))}\theta(z,\tau)\\
+              &= \exp{(\pi i a^{2}\tau
+              -a\pi i\tau - 2\pi i\tau a^{2} +2\pi i \tau \frac{1}{2}a(a+1)))}\theta(z,\tau)\\
+              &= \exp{(0)}\theta(z,\tau) = \theta(z,\tau)
+             \end{align}
+
+
+             $a\in\mathbb{Z}$より
+             $\theta(z+1,\tau)=\theta(z,\tau)$
+             を繰り返し行うと次が得られる。
+             \begin{align}
+              S_{b}\theta(z,\tau)
+              &= \theta(z+b,\tau)
+              = \theta(z+(b-1),\tau)
+              = \theta(z+(b-2),\tau)
+              = \dots = \theta(z,\tau)
+             \end{align}
+
+\hrulefill
+
+  \item[問題 1.2.1.]
+             下記補題
+             を用いて
+             $R_{(0,1/2)}$と
+             $R_{(1/2,0)}$を求めよ。
+             さらに
+             $R_{(0,1/2)}\cdot R_{(1/2,0)}=iR_{(1/2,0)}\cdot R_{(0,1/2)}$
+             を直接計算により確認せよ。
+
+             \textbf{補題}
+
+             $\delta \in \Delta = \{0,1/2,1,3/2\}$
+             \begin{gather}
+              S_{\frac{1}{2}} \xi_{\delta} = \exp{(\pi i \delta)} \xi_{\delta}\\
+              T_{\frac{1}{2}} \xi_{\delta} = \xi_{\delta + \frac{1}{2}}
+             \end{gather}
+
+\dotfill
+
+\begin{gather}
+ \xi_{\delta} = \sum_{m\in\mathbb{Z}} \exp{(\pi i(\delta+2m)\tau + 2\pi i(\delta+2m)z)}\\
+ V_{2}=\{ f = \sum_{\delta\in\Delta} a_{\delta}\xi_{\delta} \mid a_{\delta}\in\mathbb{C}\}
+\end{gather}
+
+\begin{equation}
+ \begin{pmatrix}
+  \theta_{0,0} & \theta_{0,\frac{1}{2}} & \theta_{\frac{1}{2},0} & \theta_{\frac{1}{2},\frac{1}{2}}
+ \end{pmatrix}
+ =
+ \begin{pmatrix}
+  \xi_{0} & \xi_{\frac{1}{2}} & \xi_{1} & \xi_{\frac{3}{2}}
+ \end{pmatrix}
+ \begin{pmatrix}
+  1 & 1 & 0 & 0 \\
+  0 & 0 & 1 & i \\
+  1 & -1 & 0 & 0 \\
+  0 & 0 & 1 & -i
+ \end{pmatrix}
+\end{equation}
+
+$T_{1/2} : V_{2}\to V_{2}$は
+次の様に表せる。
+\begin{align}
+ \begin{pmatrix}
+  \theta_{0,0} & \theta_{0,\frac{1}{2}} & \theta_{\frac{1}{2},0} & \theta_{\frac{1}{2},\frac{1}{2}}
+ \end{pmatrix}
+\mapsto
+ \begin{pmatrix}
+  \theta_{0,0} & \theta_{0,\frac{1}{2}} & \theta_{\frac{1}{2},0} & \theta_{\frac{1}{2},\frac{1}{2}}
+ \end{pmatrix}
+R_{(1/2,0)}
+ \\
+ \begin{pmatrix}
+  \xi_{0} & \xi_{\frac{1}{2}} & \xi_{1} & \xi_{\frac{3}{2}}
+ \end{pmatrix}
+\mapsto
+ \begin{pmatrix}
+  \xi_{0} & \xi_{\frac{1}{2}} & \xi_{1} & \xi_{\frac{3}{2}}
+ \end{pmatrix}
+ \begin{pmatrix}
+  0 & 0 & 0 & 1 \\
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 1 & 0
+ \end{pmatrix}
+\end{align}
+
+これにより次の式が成り立つ。
+\begin{equation}
+ \begin{pmatrix}
+  1 & 1 & 0 & 0 \\
+  0 & 0 & 1 & i \\
+  1 & -1 & 0 & 0 \\
+  0 & 0 & 1 & -i
+ \end{pmatrix}
+ R_{(1/2,0)}
+=
+ \begin{pmatrix}
+  0 & 0 & 0 & 1 \\
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 1 & 0
+ \end{pmatrix}
+\end{equation}
+
+逆行列を求め、左からかける。
+\begin{gather}
+  \begin{pmatrix}
+  1 & 1 & 0 & 0 \\
+  0 & 0 & 1 & i \\
+  1 & -1 & 0 & 0 \\
+  0 & 0 & 1 & -i
+ \end{pmatrix}^{-1}
+ =
+\frac{1}{2}
+\begin{pmatrix}
+ 1 & 0 & 1 & 0 \\
+ 1 & 0 & -1 & 0 \\
+ 0 & 1 & 0 & 1 \\
+ 0 & -i & 0 & i
+\end{pmatrix}
+\\
+ R_{(1/2,0)}
+  =
+\frac{1}{2}
+\begin{pmatrix}
+ 1 & 0 & 1 & 0 \\
+ 1 & 0 & -1 & 0 \\
+ 0 & 1 & 0 & 1 \\
+ 0 & -i & 0 & i
+\end{pmatrix}
+ \begin{pmatrix}
+  0 & 0 & 0 & 1 \\
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 1 & 0
+ \end{pmatrix}
+=
+\frac{1}{2}
+\begin{pmatrix}
+0 & 1 & 0 & 1 \\
+0 & -1 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+-i & 0 & i & 0
+\end{pmatrix}
+\end{gather}
+
+$S_{\frac{1}{2}} \xi_{\delta} = \exp{(\pi i \delta)} \xi_{\delta}$より
+$S_{1/2} : V_{2}\to V_{2}$は次の様に表せる。
+\begin{gather}
+ \begin{pmatrix}
+  \theta_{0,0} & \theta_{0,\frac{1}{2}} & \theta_{\frac{1}{2},0} & \theta_{\frac{1}{2},\frac{1}{2}}
+ \end{pmatrix}
+\mapsto
+ \begin{pmatrix}
+  \theta_{0,0} & \theta_{0,\frac{1}{2}} & \theta_{\frac{1}{2},0} & \theta_{\frac{1}{2},\frac{1}{2}}
+ \end{pmatrix}
+R_{(0,1/2)}
+ \\
+ \begin{pmatrix}
+  \xi_{0} & \xi_{\frac{1}{2}} & \xi_{1} & \xi_{\frac{3}{2}}
+ \end{pmatrix}
+\mapsto
+ \begin{pmatrix}
+  \xi_{0} & \xi_{\frac{1}{2}} & \xi_{1} & \xi_{\frac{3}{2}}
+ \end{pmatrix}
+ \begin{pmatrix}
+  \exp{(\pi i \frac{0}{2})} & 0 & 0 & 0 \\
+  0 & \exp{(\pi i \frac{1}{2})} & 0 & 0 \\
+  0 & 0 & \exp{(\pi i \frac{2}{2})} & 0 \\
+  0 & 0 & 0 & \exp{(\pi i \frac{3}{2})}
+ \end{pmatrix}
+\end{gather}
+
+同様に計算すると$R_{(0,1/2)}$を得られる。
+\begin{align}
+ R_{(0,1/2)}
+  &=
+\frac{1}{2}
+\begin{pmatrix}
+ 1 & 0 & 1 & 0 \\
+ 1 & 0 & -1 & 0 \\
+ 0 & 1 & 0 & 1 \\
+ 0 & -i & 0 & i
+\end{pmatrix}
+ \begin{pmatrix}
+  \exp{(\pi i \frac{0}{2})} & 0 & 0 & 0 \\
+  0 & \exp{(\pi i \frac{1}{2})} & 0 & 0 \\
+  0 & 0 & \exp{(\pi i \frac{2}{2})} & 0 \\
+  0 & 0 & 0 & \exp{(\pi i \frac{3}{2})}
+ \end{pmatrix}
+\\
+&=
+\frac{1}{2}
+\begin{pmatrix}
+1 & 0 & -1 & 0 \\
+1 & 0 & 1 & 0 \\
+0 & i & 0 & -i \\
+0 & 1 & 0 & 1
+\end{pmatrix}
+\end{align}
+
+
+
+\begin{align}
+ R_{(0,1/2)}\cdot R_{(1/2,0)}
+ &=
+\frac{1}{2}
+\begin{pmatrix}
+1 & 0 & -1 & 0 \\
+1 & 0 & 1 & 0 \\
+0 & i & 0 & -i \\
+0 & 1 & 0 & 1
+\end{pmatrix}
+\cdot
+\frac{1}{2}
+\begin{pmatrix}
+0 & 1 & 0 & 1 \\
+0 & -1 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+-i & 0 & i & 0
+\end{pmatrix}\\
+& =
+\frac{1}{4}
+\begin{pmatrix}
+ -1 & 1 & -1 & 1 \\
+1 & 1 & 1 & 1 \\
+-1 & -i & 1 & i \\
+-i & -1 & i & 1
+\end{pmatrix}
+ \\
+R_{(1/2,0)} \cdot R_{(0,1/2)}
+ &=
+\frac{1}{2}
+\begin{pmatrix}
+0 & 1 & 0 & 1 \\
+0 & -1 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+-i & 0 & i & 0
+\end{pmatrix}
+\cdot
+\frac{1}{2}
+\begin{pmatrix}
+1 & 0 & -1 & 0 \\
+1 & 0 & 1 & 0 \\
+0 & i & 0 & -i \\
+0 & 1 & 0 & 1
+\end{pmatrix}\\
+&=
+\frac{1}{4}
+\begin{pmatrix}
+ 1 & 1 & 1 & 1 \\
+-1 & 1 & -1 & 1 \\
+1 & i & -1 & -i \\
+-i & -1 & i & 1
+\end{pmatrix}
+\end{align}
+
+\hrulefill
+
+  \item[問題 1.2.2.]
+             $H_{2}$は
+             $(1,0,0)$を単位元とする群であることを確かめよ。
+
+\dotfill
+
+ハイゼンベルク群$H_{2}$の定義は次の通り。
+\begin{equation}
+ H_{2}
+  = \{ (\lambda,a,b) \mid \lambda\in\mu_{4},\;
+  a,b\in\frac{1}{2}\mathbb{Z}/\mathbb{Z}\}
+\end{equation}
+
+$\frac{1}{2}\mathbb{Z}/\mathbb{Z}=\{0,1/2\}$は加法群である。
+
+             ${}^{\forall}(\lambda,a,b),(\lambda^{\prime},a^{\prime},b^{\prime}) \in H_{2}$に対して次の様に定義する。
+             \begin{equation}
+              (\lambda,a,b)\cdot(\lambda^{\prime},a^{\prime},b^{\prime})
+               =(\lambda\lambda^{\prime} \exp{(2\pi iba^{\prime})},a+a^{\prime},b+b^{\prime})
+             \end{equation}
+
+             $\mu_{4}=\{z\in\mathbb{C} \mid z^{4}=1 \}$
+             より、
+             $\exp{(2\pi iba^{\prime})} \in \mu_{4}$である。
+             よって、
+             $\lambda\lambda^{\prime} \exp{(2\pi iba^{\prime})} \in \mu_{4}$
+             であり、
+             $H_{2}$は演算で閉じていることがわかる。
+
+             $a^{\prime}=0$または$b=0$であれば
+             $\exp{(2\pi iba^{\prime})}=1$である。
+             よって、${}^{\forall}h\in H_{2}$にたいして
+             $h \cdot (1,0,0) = (1,0,0)\cdot h =h$となり、
+             $(1,0,0)$は$H_{2}$の単位元である。
+
+
+             $(\lambda,a,b)\in H_{2}$に対して
+             $(\lambda^{-1}\exp{(2\pi iba)},-a,-b)$は
+             次の様に逆元となる。
+             \begin{align}
+              &(\lambda,a,b)\cdot(\lambda^{-1}\exp{(2\pi iba)},-a,-b)\\
+               &=(\lambda\lambda^{-1}\exp{(2\pi iba)} \exp{(2\pi ib(-a))},a-a,b-b)\\
+               &=(1,0,0)
+              \\
+              & (\lambda^{-1}\exp{(2\pi iba)},-a,-b) \cdot (\lambda,a,b)\\
+              &= (\lambda^{-1}\exp{(2\pi iba)}\lambda \exp{(2\pi i(-b)a)},-a+a,-b+b)\\
+              &=(1,0,0)
+             \end{align}
+
+             $a,a^{\prime},a^{\prime\prime},b,b^{\prime},b^{\prime\prime}\in\frac{1}{2}\mathbb{Z}/\mathbb{Z}$とし、
+             $\lambda,\lambda^{\prime},\lambda^{\prime\prime}\in\mu_{4}$
+             する。
+             \begin{align}
+              & \left( \lambda\lambda^{\prime}\exp(2\pi iba^{\prime}) \right)
+               \lambda^{\prime\prime}
+               \exp{(2\pi i (b+b^{\prime})a^{\prime\prime})}
+              \\
+              &= \lambda\lambda^{\prime}\lambda^{\prime\prime}
+                \exp{(2\pi iba^{\prime}
+              + 2\pi i ba^{\prime\prime}
+              + 2\pi i b^{\prime}a^{\prime\prime})}
+              \\
+              &=
+              \lambda
+               \left( \lambda^{\prime}\lambda^{\prime\prime}\exp(2\pi ib^{\prime}a^{\prime\prime}) \right)
+               \exp{(2\pi i b(a^{\prime}+a^{\prime\prime}))}
+             \end{align}
+
+             この為、次の式が成り立つ。
+             \begin{equation}
+              \left( (\lambda,a,b)\cdot (\lambda^{\prime},a^{\prime},b^{\prime})\right) \cdot (\lambda^{\prime\prime},a^{\prime\prime},b^{\prime\prime})
+               =
+               (\lambda,a,b)\cdot \left( (\lambda^{\prime},a^{\prime},b^{\prime}) \cdot (\lambda^{\prime\prime},a^{\prime\prime},b^{\prime\prime})\right)
+             \end{equation}
+
+             以上により$H_{2}$は群である。
+
+\hrulefill
+
+ \end{description}
+
+ \item[第4回]
+ \begin{description}
+  \item[問題 1.1.1.]
+             次の事実を確認せよ。
+             \begin{enumerate}
+              \item
+                   $\theta_{1/2,0}(z,\tau)$は
+                   領域$\Omega(\tau)$に次の零点を持つ。
+                   \begin{equation}
+                    z=\frac{1}{2},\quad
+                     \frac{3}{2},\quad
+                     \frac{1}{2}+\tau,\quad
+                     \frac{3}{2}+\tau
+                   \end{equation}
+
+              \item
+                   $\theta_{0,1/2}(z,\tau)$は
+                   領域$\Omega(\tau)$に次の零点を持つ。
+                   \begin{equation}
+                    z=\frac{1}{2}\tau,\quad
+                     1+\frac{1}{2}\tau,\quad
+                     \frac{3}{2}\tau,\quad
+                     1+\frac{3}{2}\tau
+                   \end{equation}
+
+              \item
+                   $\theta(z,\tau)=\theta_{0,0}(z,\tau)$は
+                   領域$\Omega(\tau)$に次の零点を持つ。
+                   \begin{equation}
+                    z=\frac{1}{2}+\frac{1}{2}\tau,\quad
+                     \frac{3}{2}+\frac{1}{2}\tau,\quad
+                     \frac{1}{2}+\frac{3}{2}\tau,\quad
+                     \frac{3}{2}+\frac{3}{2}\tau
+                   \end{equation}
+             \end{enumerate}
+
+\dotfill
+
+\begin{equation}
+ \Omega(\tau) = \{ x+y\tau \in\mathbb{C} \mid 0\leq x <2,\; 0\leq y <2 \}
+  ,\quad
+  \tau\in\mathbb{H}=\{ z\in\mathbb{C} \mid \mathrm{Im} z >0\}
+\end{equation}
+
+
+$\theta_{1/2,1/2}(0,\tau)=0$より
+$\theta_{1/2,0}(1/2,\tau)=0$である。
+
+\begin{equation}
+ \theta_{0,1/2}(0+\frac{1}{2}\tau,\tau)
+  = \exp{(-\pi i\frac{1}{4}\tau-2\pi i\frac{1}{2}(0+\frac{1}{2}))}
+  \theta_{1/2,1/2}(0,\tau) =0
+\end{equation}
+よって、
+$\theta_{0,1/2}(\frac{1}{2}\tau,\tau)=0$である。
+ここから
+$\theta_{0,1/2}(\frac{1}{2}\tau,\tau)=\theta_{0,0}(\frac{1}{2}+\frac{1}{2}\tau,\tau)=0$である。
+
+
+テータ関数は次の性質がある。
+\begin{equation}
+ \theta(z+1,\tau) = \theta(z,\tau)
+  ,\quad
+  \theta(z+\tau,\tau) =
+  \exp{(-\pi i\tau -2\pi iz)}\theta(z,\tau)
+\end{equation}
+
+
+\begin{gather}
+ \theta(z,\tau) = \sum_{n\in\mathbb{Z}} \exp{(\pi i n^{2}\tau + 2\pi i nz)}\\
+ \theta_{a,b}(z,\tau)
+  = \sum_{n\in\mathbb{Z}}\exp{(\pi i(n+a)^{2}\tau + 2\pi i(n+a)(z+b))}
+\end{gather}
+
+\begin{equation}
+ \theta_{a,b}(z+2,\tau) = \theta_{a,b}(z,\tau)
+  ,\quad
+ \theta_{a,b}(z+2\tau,\tau) = \exp{(-4\pi i(\tau+z))} \theta_{a,b}(z,\tau)
+\end{equation}
+
+
+もし$\alpha\in\mathbb{C}$が
+$\theta(z,\tau)$の零点であるなら
+$\theta(\alpha,\tau)=0$であり、
+次が得られる。
+\begin{equation}
+ \theta(\alpha+1,\tau)=\theta(\alpha,\tau)=0
+  ,\quad
+ \theta(\alpha+\tau,\tau)
+=
+\exp{(-\pi i\tau -2\pi i\alpha)}
+\theta(\alpha,\tau)=0
+\end{equation}
+
+指標付き関数$\theta_{a,b}(z,\tau)$でも同様に
+次の式が成り立つ。
+\begin{equation}
+ \theta_{a,b}(\alpha+1,\tau)=\theta_{a,b}(\alpha,\tau)=0
+  ,\quad
+ \theta_{a,b}(\alpha+\tau,\tau)=0
+\end{equation}
+
+つまり、零点$\alpha\in\mathbb{C}$に対し、
+$\alpha+1,\alpha+\tau$も零点となる。
+
+
+$\theta_{1/2,0}(1/2,\tau)=0$
+であるから、
+$\frac{1}{2}+1,\frac{1}{2}+\tau$も零点であり、
+$\frac{3}{2}+\tau$も零点となる。
+つまり、
+$\theta_{1/2,0}(z,\tau)$の零点は
+次の4点である。
+\begin{equation}
+ z=\frac{1}{2},\quad
+  \frac{3}{2},\quad
+  \frac{1}{2}+\tau,\quad
+  \frac{3}{2}+\tau
+\end{equation}
+
+
+
+$\theta_{0,1/2}(\frac{1}{2}\tau,\tau)=0$
+であるから、
+$1+\frac{1}{2}\tau,\frac{1}{2}\tau+\tau$
+も零点であり、
+$1+\frac{3}{2}\tau$
+も零点である。
+つまり、
+$\theta_{0,1/2}(z,\tau)$の零点は
+次の4点である。
+\begin{equation}
+ z=\frac{1}{2}\tau,\quad
+  1+\frac{1}{2}\tau,\quad
+  \frac{3}{2}\tau,\quad
+  1+\frac{3}{2}\tau
+\end{equation}
+
+
+$\theta_{0,0}(\frac{1}{2}+\frac{1}{2}\tau,\tau)=0$であるので、
+$\frac{3}{2}+\frac{1}{2}\tau,\frac{1}{2}+\frac{3}{2}\tau$
+も零点となり、
+$\frac{3}{2}+\frac{3}{2}\tau$も零点となる。
+つまり、
+$\theta_{0,0}(z,\tau)$の零点は
+次の4点である。
+\begin{equation}
+ z=\frac{1}{2}+\frac{1}{2}\tau,\quad
+  \frac{3}{2}+\frac{1}{2}\tau,\quad
+  \frac{1}{2}+\frac{3}{2}\tau,\quad
+  \frac{3}{2}+\frac{3}{2}\tau
+\end{equation}
+
+
+\hrulefill
+
+\end{description}
+
+\end{description}
+
+\hrulefill
+
+\end{document}

@@ -1,0 +1,313 @@
+\documentclass[12pt,b5paper]{ltjsarticle}
+
+%\usepackage[margin=15truemm, top=5truemm, bottom=5truemm]{geometry}
+%\usepackage[margin=10truemm,left=15truemm]{geometry}
+\usepackage[margin=10truemm]{geometry}
+
+\usepackage{amsmath,amssymb}
+%\pagestyle{headings}
+\pagestyle{empty}
+
+%\usepackage{listings,url}
+%\renewcommand{\theenumi}{(\arabic{enumi})}
+
+%\usepackage{graphicx}
+
+%\usepackage{tikz}
+%\usetikzlibrary {arrows.meta}
+%\usepackage{wrapfig}
+%\usepackage{bm}
+
+% ルビを振る
+\usepackage{luatexja-ruby}	% required for `\ruby'
+
+%% 核Ker 像Im Hom を定義
+%\newcommand{\Img}{\mathop{\mathrm{Im}}\nolimits}
+%\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+%\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+
+%\DeclareMathOperator{\Rot}{rot}
+%\DeclareMathOperator{\Div}{div}
+%\DeclareMathOperator{\Grad}{grad}
+%\DeclareMathOperator{\arcsinh}{arcsinh}
+%\DeclareMathOperator{\arccosh}{arccosh}
+%\DeclareMathOperator{\arctanh}{arctanh}
+
+%\usepackage{url}
+
+%\usepackage{listings}
+%
+%\lstset{
+%%プログラム言語(複数の言語に対応，C,C++も可)
+%  language = Python,
+%%  language = Lisp,
+%%  language = C,
+%  %背景色と透過度
+%  %backgroundcolor={\color[gray]{.90}},
+%  %枠外に行った時の自動改行
+%  breaklines = true,
+%  %自動改行後のインデント量(デフォルトでは20[pt])
+%  breakindent = 10pt,
+%  %標準の書体
+%%  basicstyle = \ttfamily\scriptsize,
+%  basicstyle = \ttfamily,
+%  %コメントの書体
+%%  commentstyle = {\itshape \color[cmyk]{1,0.4,1,0}},
+%  %関数名等の色の設定
+%  classoffset = 0,
+%  %キーワード(int, ifなど)の書体
+%%  keywordstyle = {\bfseries \color[cmyk]{0,1,0,0}},
+%  %表示する文字の書体
+%  %stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+%  %枠 "t"は上に線を記載, "T"は上に二重線を記載
+%  %他オプション：leftline，topline，bottomline，lines，single，shadowbox
+%  frame = TBrl,
+%  %frameまでの間隔(行番号とプログラムの間)
+%  framesep = 5pt,
+%  %行番号の位置
+%  numbers = left,
+%  %行番号の間隔
+%  stepnumber = 1,
+%  %行番号の書体
+%%  numberstyle = \tiny,
+%  %タブの大きさ
+%  tabsize = 4,
+%  %キャプションの場所("tb"ならば上下両方に記載)
+%  captionpos = t
+%}
+
+%\usepackage{cancel}
+%\usepackage{bussproofs}
+%\usepackage{proof}
+
+\begin{document}
+
+\hrulefill
+
+\begin{gather}
+    \mathcal{L}(\mathbb{R})
+     : \mathbb{R} の ルベーグ可測集合全体\\
+    C_{per}^{m}([-\pi,\pi])
+     =\left\{ f:[-\pi,\pi]\to \mathbb{C} \mid f:C^{m}級、\;
+     f^{(k)}(-\pi)=f^{(k)}(\pi) \; (0\leq k \leq m) \right\}\\
+    \mathcal{L}^{p}(\mu)=\{ f:X\to\mathbb{C}
+     \mid f:\mathcal{F}可測、\; \int_{X} \lvert f(x)\rvert^{p} \mu(dx) < \infty \}\\
+     \|f\|_{p} = \left( \int_{X} \lvert f(x)\rvert^{p} \mu(dx)\right)^{\frac{1}{p}}\\
+     L^{p}(\mu)=\mathcal{L}^{p}(\mu)/\sim,\quad
+      f\sim g \Leftrightarrow f=g \; \mu - a.e.
+\end{gather}
+
+\begin{gather}
+    \mathcal{L}^{p}(\mathbb{R}^{d})=
+    \left\{ f:\mathbb{R}^{d}\to\mathbb{C}
+     \;\middle|\; f:\mathcal{F}可測、\; \int_{\mathbb{R}^{d}} \lvert f(x)\rvert^{p} dx < \infty \right\}
+\end{gather}
+
+\hrulefill
+
+\begin{description}
+ \item [第6回]
+      任意の$g\in \mathcal{L}^{p}(\mathbb{R}^{d})$に対して、
+      次を証明せよ。
+      \begin{equation}
+       \int_{\mathbb{R}^{d}}
+        \lvert g(x) - g(x)1{B(0,m)}(x) \rvert^{p}
+        \mathrm{d}x
+        \overset{m \to \infty}{\longrightarrow}
+        0
+      \end{equation}
+      (HINT: \ruby{Lebesgue}{ルベーグ} の収束定理を使う。
+      仮定の殆どは$\mathcal{L}^{p}(\mathbb{R}^{d})$
+      の定義からわかる。)
+
+    \dotfill
+
+    $g\in \mathcal{L}^{p}(\mathbb{R}^{d})$より
+    $g$は可測関数で、
+    $\int_{\mathbb{R}^{d}} \lvert g(x)\rvert^{p} dx < \infty$である。
+
+    任意の$m \in \mathbb{R}$に対して
+    $\lvert g(x)1_{B(0,m)}(x) \rvert \leq \lvert g(x) \rvert$
+    であり、
+    $\displaystyle g(x) = \lim_{m\to\infty} g(x)1_{B(0,m)}(x)$
+    である。
+    
+    これより次の式が成り立つ。
+    \begin{gather}
+        0\leq
+        \lvert g(x) - g(x)1_{B(0,m)}(x) \rvert
+        \leq \lvert g(x) \rvert\\
+        \lim_{m\to\infty}\lvert g(x) - g(x)1_{B(0,m)}(x) \rvert =0
+    \end{gather}
+
+    $g(x) - g(x)1_{B(0,m)}(x)$も可測関数であるから、
+    \ruby{Lebesgue}{ルベーグ} の収束定理より
+    \begin{equation}
+        \lim_{m\to\infty}\int_{\mathbb{R}^{d}}
+        \lvert g(x) - g(x)1_{B(0,m)}(x) \rvert^{p}
+        \mathrm{d}x
+        =
+        \int_{\mathbb{R}^{d}} \lim_{m\to\infty}
+        \lvert g(x) - g(x)1_{B(0,m)}(x) \rvert^{p}
+        \mathrm{d}x
+    \end{equation}
+    となる。
+
+    よって、
+    \begin{equation}
+        \lim_{m\to\infty}\int_{\mathbb{R}^{d}}
+        \lvert g(x) - g(x)1_{B(0,m)}(x) \rvert^{p}
+        \mathrm{d}x
+        =0
+    \end{equation}
+
+    \ruby{Lebesgue}{ルベーグ} の収束定理より
+    \begin{equation}
+        \int_{\mathbb{R}^{d}} \lvert g(x) \rvert \mathrm{d}x
+        =
+        \lim_{m\to\infty}
+        \int_{\mathbb{R}^{d}} \lvert g(x)1_{B(0,m)}(x) \rvert \mathrm{d}x
+    \end{equation}
+    であるから
+    \begin{gather}
+        \int_{\mathbb{R}^{d}} \lvert g(x) \rvert \mathrm{d}x
+        -
+        \lim_{m\to\infty}
+        \int_{\mathbb{R}^{d}} \lvert g(x)1_{B(0,m)}(x) \rvert \mathrm{d}x =0\\
+        \lim_{m\to\infty}\int_{\mathbb{R}^{d}}
+        \left( \lvert g(x) \rvert - \lvert g(x)1_{B(0,m)}(x) \rvert \right)\mathrm{d}x =0
+    \end{gather}
+
+    $|x-y| \leq |x|+|-y|$より
+    $|x-y| - |-y| \leq |x|$
+    \begin{equation}
+        -|x-y| \leq |x|-|y| \leq |x-y| 
+    \end{equation}
+
+    $\lvert g(x)1_{B(0,m)}(x) \rvert \leq \lvert g(x) \rvert$より
+    \begin{equation}
+        \lvert g(x) \rvert - \lvert g(x)1_{B(0,m)}(x) \rvert
+        \geq \lvert g(x) - g(x)1_{B(0,m)}(x) \rvert
+    \end{equation}
+
+
+    \begin{equation}
+        \lvert g(x) - g(x)1_{B(0,m)}(x) \rvert
+        \leq
+        \lvert g(x) \rvert
+    \end{equation}
+    
+    \begin{equation}
+        \lim_{m\to\infty}\int_{\mathbb{R}^{d}}
+        \lvert g(x) - g(x)1_{B(0,m)}(x) \rvert^{p}
+        \mathrm{d}x
+        =
+        \int_{\mathbb{R}^{d}} \lim_{m\to\infty}
+        \lvert g(x) - g(x)1_{B(0,m)}(x) \rvert^{p}
+        \mathrm{d}x
+    \end{equation}
+    
+
+    \hrulefill
+
+
+ \item [第7回]
+      $a = (a_{n})_{n\in\mathbb{Z}} \in \ell^{2}(\mathbb{Z})$
+      に対して
+      $f=\sum_{n\in\mathbb{Z}} a_{n}e_{n}
+             \in L^{2}((-\pi,\pi),\frac{1}{2\pi}\mathrm{d}x)$
+      とおく。
+      このとき、
+      次の式を示せ。
+      \begin{equation}
+       \hat{f}(m) = \lim_{N\to\infty}
+        \left\langle \sum_{n=-N}^{N}a_{n}e_{n},e_{m} \right\rangle
+      \end{equation}
+      (HINT:内積が片方の変数について連続であることをまず示す。
+      それは$\langle u_{n},v\rangle - \langle u,v\rangle
+             = \langle u_{n}-u,v \rangle$ に
+      \ruby{Schwarz}{シュワルツ}の不等式を使って分かる。)
+
+             \dotfill
+
+
+
+
+            \hrulefill
+
+\newpage
+
+ \item [第10回]
+      内積空間$(V,\; \langle \cdot , \cdot \rangle)$において、
+      以下の集合は閉部分集合であることを示せ。
+      \begin{enumerate}
+       \item
+            $u\in V$と$c\in \mathbb{C}$に対して、
+            $\{ v\in V : \langle u,v\rangle =c \}$
+
+            \dotfill
+
+            $V$ の部分集合$S_{(u,c)}$ を次のようにおく。
+            \begin{equation}
+             S_{(u,c)} = \{ v\in V : \langle u,v\rangle =c \}
+            \end{equation}
+
+            $p \in S_{(u,c)}^{c}$とし、
+            $\varepsilon=\min \{ \lvert \langle p,s \rangle \rvert/2 : s \in S_{(u,c)} \}$
+            とおき、
+            $p$の$\varepsilon$近傍を
+            $U_{(p,\varepsilon)}= \{ v\in V : \lvert \langle v,p \rangle \rvert < \varepsilon \}$
+            とする。
+            このとき、
+            $S_{(u,c)} \cap U_{(p,\varepsilon)} = \emptyset$
+            である。
+
+            任意の$S_{(u,c)}^{c}$に対して同様の
+            $\varepsilon$近傍が存在するため、
+            $S_{(u,c)}^{c}$は開集合である。
+
+            よって、
+            $S_{(u,c)}$は閉集合である。
+
+            \hrulefill
+
+       \item
+            一般の$A \subset V$に対して
+            $A^{\perp} = \{ v\in V : {}^{\forall}u\in A,\;
+            \langle u,v \rangle =0 \}$
+
+            (HINT: 内積は片方の変数について連続、
+            連続写像による閉集合の逆像は閉集合、
+            閉集合族の共通部分は閉集合、などを思い出す。)
+
+            \dotfill
+
+            $v\in V$に対して
+            連続写像$f_{v}$を次のように定義する。
+            \begin{equation}
+             f_{v} : V \rightarrow \mathbb{C} ,\quad u \mapsto \langle u, v \rangle
+            \end{equation}
+
+            逆像 $f_{v}^{-1}( \{ 0 \} )$ は
+            閉集合$\{0\} \subset V$の逆像であるので、
+            閉集合である。
+
+            $A \subset V$の任意の元$a\in A$ に対して逆像が考えられ、
+            $A^{\perp}$は次のような閉集合の共通部分である。
+            \begin{equation}
+             A^{\perp} = \bigcap_{a\in A} f_{a}^{-1}(\{0\})
+            \end{equation}
+
+            閉集合の共通部分は閉集合となるので、
+            $A^{\perp}$は閉集合である。
+
+
+            \hrulefill
+
+      \end{enumerate}
+
+\end{description}
+
+\hrulefill
+
+\end{document}

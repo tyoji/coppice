@@ -1,0 +1,251 @@
+商集合 quotient set
+同値類 equivalence class
+法 modulus
+合同 congruent
+同値 equivalent
+同値関係 equivalence relation
+推移律 transitivity
+反射律 reflexiveness
+対称律 symmetry
+線型代数学 linear algebra
+多変数解析学 multivariable calculus
+パラメータ parameter
+導関数 derivative
+偏微分 partial derivative
+全微分 total differential
+ベクトル値函数 vector-valued function
+ベクトル解析 vector calculus
+ベクトル解析 vector analysis
+ベクトル場 vector field
+集積点 accumulation point
+極限点 limit point
+
+位相空間 topological space
+内部 interior
+開核 open kernel
+閉包 closure
+境界 boundary
+境界 border
+近傍 neighborhood
+
+
+線形空間 linear space
+線形代数 linear algebra
+数式 mathematical expression
+数式 mathematical formula
+
+全単射 bijective function
+全単射 bijection
+単射 injection
+単射 monomorphism
+全射 surjection
+全射 epimorphism
+準同型 homomorpohism
+同型 isomorphism
+
+
+微分方程式 differential equation
+
+マクスウェルの方程式 Maxwell's equations
+
+漸化式 recurrence relation
+
+極値 extremum
+極大 maximal
+極小 minimal
+極大値 maximal value
+極小値 minimal value
+
+極大 local maximum
+極小 local minimum
+極大値 maximum value
+極小値 minimum value
+
+
+最大 maximum
+最小 minimum
+最大値 maximum value
+最小値 minimum value
+最大値 maximal value
+最小値 minimal value
+
+
+分配法則 Distributive property
+逆元 invers element
+単位元 identity element
+
+有理数 rational number
+無理数 irrational number
+分数 fraction
+分子 numerator
+分母 denominator
+
+確率密度関数 probability density function
+
+三角関数の加法定理 Trigonometric Addition Formulas
+
+
+指数 exponentiation
+対数 logarithm
+
+
+確率過程 stochastic process
+
+群論 group theory
+群 group
+単位元 unit element
+単位元 identity element
+逆元 inverse element
+
+結合律 associative law
+
+剰余類群 residue class group
+二面体群 dihedral group
+
+巡回群 cyclic group
+
+近似値 approximate value
+
+
+距離空間 metric space
+
+
+理論 theory
+定理 theorem
+系 corollary
+公理 axiom
+定義 definition
+
+
+連続 continuous
+連続写像 continuous mapping
+連続関数 continuous function
+
+計算 calculation
+計算 computation
+合計 summation
+合計 sum
+
+ラプラス変換 Laplace tranceformation
+合成積 composition product
+畳み込み convolution
+
+
+
+複素解析 complex analysis
+複素関数 complex function
+
+
+統計学 statistics
+統計 statistics
+記述統計学 descriptive statistic
+推計統計学 inferential statistics
+マルコフ連鎖モンテカルロ法 Markov chain Monte Carlo methods
+マルコフ連鎖 Markov chain
+
+フェルマーの小定理 Fermat's little theorem
+フェルマーの最終定理 Fermat's Last Theorem
+
+
+指数 exponent
+相対位相 relative topology
+数理論理学 mathematical logic
+絶対収束 absolutely convergent
+
+
+広義積分 improper integral
+数論 number theory
+
+
+平方非剰余 quadratic non-residue
+
+連結空間 connected space
+弧状連結空間 path connected
+微分作用素 differential operator
+確率論 probability theory
+マルチンゲール martingale
+
+ハウスドルフ空間 Hausdorff space
+
+微分幾何学 differential geometry
+測地線 geodesic
+曲率 curvature
+捩率 torsion
+
+
+
+留数 residue
+留数定理 residue theorem
+ローラン級数 Laurent series
+
+
+多項式 polynomial
+
+既約多項式 irreducible polynomial
+既約 irreducible
+解析学 analysis
+
+自明な結び目 trivial knot
+一致の定理 identity theorem
+
+
+上極限 limit inferior
+下極限 limit superior
+
+上極限集合 limit inferior set
+下極限集合 limit superior set
+
+解析的整数論 analytic number theory
+
+ルベーグ積分 Lebesgue integral
+ルベーグ測度 Lebesgue measure
+測度 measure
+完備 complete
+零測度 null measure
+有限加法的測度 premeasure
+完全加法族 completely additive class
+有限加法性 finite additivity
+完全加法性 completely additivity
+劣加法性 subadditivity
+
+
+ノルム norm
+半ノルム seminorm
+準ノルム quasinorm
+
+
+共役類 conjugacy class
+
+
+関数解析 functional analysis
+
+
+環 ring
+可換環 commutative ring
+統計力学 statistical mechanics
+
+
+体 field
+斜体 skew field
+
+多様体 manifold
+
+
+
+ベクトル vector
+固有値 eigenvalue
+固有ベクトル eigenvector
+固有対 eigenpair
+固有空間 eigenspace
+線型代数学 linear algebra
+内積 inner product
+スカラー積 scalar product
+計量ベクトル空間 metric vector space
+内積空間 inner product space
+線型独立 linearly independent
+線型従属関係 linear dependence
+基底 basis
+グラム・シュミットの正規直交化法 Gram–Schmidt orthonormalization
+
+
+
