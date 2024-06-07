@@ -6,12 +6,12 @@
 
 \usepackage{amsmath,amssymb}
 
-% 定理環境
-\usepackage{amsthm}
-\newtheorem{theo}{Theorem}
-
-%\pagestyle{headings}
-\pagestyle{empty}
+%% 定理環境
+%\usepackage{amsthm}
+%\newtheorem{theo}{Theorem}
+%
+%%\pagestyle{headings}
+%\pagestyle{empty}
 
 %\usepackage{listings,url}
 %\renewcommand{\theenumi}{(\arabic{enumi})}
@@ -27,9 +27,9 @@
 %\usepackage{luatexja-ruby}	% required for `\ruby'
 
 %% 核Ker 像Im Hom を定義
-\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+%\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
 %\newcommand{\Img}{\mathop{\mathrm{Im}}\nolimits}
-\newcommand{\Ran}{\mathop{\mathrm{Ran}}\nolimits}
+%\newcommand{\Ran}{\mathop{\mathrm{Ran}}\nolimits}
 %\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
 
 %\DeclareMathOperator{\Rot}{rot}
@@ -88,44 +88,50 @@
 
 \begin{document}
 
-\hrulefill
+%$V$をベクトル空間とし
+次のように$W$を定めると$W$は$V^{4}$の部分空間である。
+\begin{equation}
+ W=
+  \left\{
+   \begin{pmatrix} x\\y\\z\\w \end{pmatrix} \in V^{4}
+   \; \middle| \; 2y-z+w=0
+  \right\}
+\end{equation}
 
-\begin{description}
- \item[1-1]
-            Riesz の表現定理の証明で、
-            線型汎函数$\phi$の連続性がないと、
-            証明のどこが破綻するのか説明せよ。
-
-            \begin{theo}[Riesz の表現定理]
-             $(H,\langle\cdot,\cdot\rangle)$ を Hilbert 空間とし,
-             $\phi$をその上の連続線型汎関数とすると,
-             ただ一つ$h_{\phi}\in H$が存在して$\phi(x)=\langle x,h_{\phi}\rangle$と表現できる．
-            \end{theo}
-
-            \begin{proof}
-            \begin{enumerate}
-             \item $H = \Ker(\phi) \oplus \Ker(\phi)^{\perp}$
-             \item $x\in H$に対して, \; $x=x_{1}+x_{2} \quad (x_{1}\in\Ker(\phi) , \; x_{2}\in\Ker(\phi)^{\perp})$
-             \item $\phi(x)=\phi(x_{2})$
-             \item $H/\Ker(\phi) \simeq \Ran(\phi)$
-             \item $\dim_{\mathbb{C}}\Ker(\phi)^{\perp} = 1$
-             \item ${}^\exists h\in\Ker(\phi)^{\perp} \; \text{ s.t. } \; x_{2}=\langle x,h \rangle h$
-             \item $\phi(x_{2}) = \langle x,h \rangle \phi(h) = \langle x, \overline{\phi(h)} h \rangle$
-             \item $h_{\phi} = \overline{\phi(h)} h$として存在する。
-            \end{enumerate}
-
-            $\langle x,h_{1} \rangle = \langle x,h_{2} \rangle$とする.
-            $\langle x,h_{1} \rangle - \langle x,h_{2} \rangle = \langle x,h_{1} - h_{2} \rangle=0$とである.
-            ${}^\forall x \in H$に対して$\langle x,h_{1} - h_{2} \rangle=0$であるので,
-            $h_{1}-h_{2}=0$である.
-            \end{proof}
-
-            \dotfill
-
-
-
-\end{description}
+この時、
+$W$の基底を求めよ。
 
 \hrulefill
+
+$W$の元は$2y-z+w=0$を満たす。
+ベクトルは成分ごとの和で加法を定めているため、
+次のように$x,y,z$ごとで分けた3つの元の和で表せる。
+\begin{equation}
+ \begin{pmatrix} x\\y\\z\\w \end{pmatrix}
+ = \begin{pmatrix} x\\y\\z\\-2y+z \end{pmatrix}
+ = \begin{pmatrix} x\\0\\0\\0 \end{pmatrix}
+ + \begin{pmatrix} 0\\y\\0\\-2y \end{pmatrix}
+ + \begin{pmatrix} 0\\0\\z\\z \end{pmatrix}
+\end{equation}
+
+$x,y,z\in V$は$V^{4}$のスカラーであるので、
+上記式は次のようになる。
+\begin{equation}
+ \begin{pmatrix} x\\0\\0\\0 \end{pmatrix}
+ + \begin{pmatrix} 0\\y\\0\\-2y \end{pmatrix}
+ + \begin{pmatrix} 0\\0\\z\\z \end{pmatrix}
+ =
+  x\begin{pmatrix} 1\\0\\0\\0 \end{pmatrix}
+ + y\begin{pmatrix} 0\\1\\0\\-2 \end{pmatrix}
+ + z\begin{pmatrix} 0\\0\\1\\1 \end{pmatrix}
+\end{equation}
+
+よって、$W$の基底は次の3つである。
+\begin{equation}
+ \begin{pmatrix} 1\\0\\0\\0 \end{pmatrix},\quad
+ \begin{pmatrix} 0\\1\\0\\-2 \end{pmatrix},\quad
+ \begin{pmatrix} 0\\0\\1\\1 \end{pmatrix}
+\end{equation}
+
 
 \end{document}
