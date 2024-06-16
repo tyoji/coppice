@@ -24,7 +24,7 @@
 %\usepackage{bm}
 
 % ルビを振る
-%\usepackage{luatexja-ruby}	% required for `\ruby'
+\usepackage{luatexja-ruby}
 
 %% 核Ker 像Im Hom を定義
 \newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
@@ -90,9 +90,76 @@
 
 \hrulefill
 
+$C(K)$は$K$上連続関数全体の集合。
+
+
+\textbf{\ruby{Cauchy}{コーシー}列}
+
+点列$\{a_{i}\}_{i\in\mathbb{N}}$がある時点以降、
+差が十分に小さくなること。
+
+
+\textbf{完備}
+
+ノルム空間$X$の任意の\ruby{Cauchy}{コーシー}列が
+$X$の点に収束する時、$X$は完備であるという。
+
+\textbf{\ruby{Banach}{バナッハ}空間}
+
+完備なノルム空間のこと。
+
+\textbf{$L^{p}$空間 (\ruby{Lebesgue}{ルベーグ}空間)}
+
+$(\Omega,\mathcal{B},\mu)$を測度空間、
+$p\in [1,\infty)$とする。
+\begin{equation}
+ L^{p}(\Omega) =
+  \left\{
+   u:\Omega\to\mathbb{C} \; \middle| \; uは可測かつ \int_{\Omega} \lvert u \rvert^{p}\mathrm{d}\mu < \infty
+  \right\}
+\end{equation}
+
+
+
+\textbf{\ruby{Sobolev}{ソボレフ}空間}
+
+$k\in\mathbb{N}_{0}, \; p\in [1,\infty]$
+\begin{equation}
+ C^{k,p}(U) = \{ u\in C^{k}(U) \mid \|u\|_{k,p} < \infty\}
+  , \|u\|_{k,p} = \left(\sum_{\lvert \alpha \rvert \leq k} (\|\partial^{\alpha}u\|_{p})^{p}\right)^{1/p}
+\end{equation}
+
+$C^{k,p}(U)$を完備化した空間をSobolev空間といい
+$W^{k,p}(U)$と表す。
+
+$W^{0,p}(U)=L^{p}(U)$である。
+
+
+
+\textbf{\ruby{Hilbert}{ヒルベルト}空間}
+
+内積空間に内積より定義されるノルムを用いて完備化を行った空間を
+Hilbert空間という。
+
+\begin{equation}
+ C^{k,2}(U) = \left\{ u\in C^{k}(U) \; \middle| \; \sum_{\lvert \alpha \rvert\leq k}\int_{U}\lvert \partial^{\alpha}u(x) \rvert^{2}\mathrm{d}x < \infty \right\}
+\end{equation}
+$C^{k,2}(U)$を完備化して得られるHilbert空間を
+$k$階のSobolev空間といい、$H^{k}(U)$と表す。
+
+\begin{equation}
+ C_{0}^{k}(U) = \{ u\in C^{k}(U) \mid \mathrm{supp}\; u \Subset U\}
+\end{equation}
+$C_{0}^{k}(U)$を完備化した空間を$H_{0}^{k}(U)$と表す。
+
+
+
+\hrulefill
+
+
 \begin{description}
  \item[1-1]
-            Riesz の表現定理の証明で、
+            \ruby{Riesz}{リース} の表現定理の証明で、
             線型汎函数$\phi$の連続性がないと、
             証明のどこが破綻するのか説明せよ。
 
@@ -121,6 +188,45 @@
             \end{proof}
 
             \dotfill
+
+            上記証明の1～8の内、$\phi$が連続でないとすると、
+            7の$\phi(x_{2}) = \langle x,h \rangle \phi(h)$が成立しない。
+
+            $\phi$に対して$h\in H$が存在するため、
+            $\phi(\alpha)$とした時、
+            $\alpha$によって変化するのは
+            $\langle \alpha,h \rangle$の部分のみである。
+            $\langle \alpha,h \rangle$は連続性を持つため、
+            $\phi$が連続でなければならない。
+
+            \hrulefill
+
+ \item[1-2]
+            \ruby{Poisson}{ポアソン} 方程式の弱解の定義において、
+            $\phi$を動かす範囲は
+            $C_{c}^{\infty}(D)$でも
+            $H_{0}^{1}(D)$でも
+            同値であることを示せ。
+            ただし \ruby{Poincar\'e}{ポアンカレ} の不等式は、
+            $H_{0}^{1}(D)$まで
+            拡張されているとして用いてよい。
+
+
+            \textbf{Poisson方程式($\Delta u = f$)の弱解}
+            
+            $u\in H_{0}^{1}(D)$で、
+            全ての$\phi \in C_{c}^{\infty}(D)$に対し
+            $-\langle u,\phi \rangle _{H^{1}}=\langle f,\phi \rangle_{L^{2}}$
+            を満たすもの
+
+            \dotfill
+
+            $C_{c}^{\infty}(D)$が$L^{2}(D)$で稠密
+
+            $C_{c}^{\infty}(D)$を完備化し$H_{0}^{1}(D)$を作る
+
+            
+            \hrulefill
 
 
 
