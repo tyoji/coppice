@@ -1,0 +1,354 @@
+\documentclass[12pt,b5paper]{ltjsarticle}
+
+%\usepackage[margin=15truemm, top=5truemm, bottom=5truemm]{geometry}
+%\usepackage[margin=10truemm,left=15truemm]{geometry}
+\usepackage[margin=10truemm]{geometry}
+
+\usepackage{amsmath,amssymb}
+
+% 定理環境
+\usepackage{amsthm}
+\newtheorem{theo}{Theorem}
+
+%\pagestyle{headings}
+\pagestyle{empty}
+
+%\usepackage{listings,url}
+%\renewcommand{\theenumi}{(\arabic{enumi})}
+
+%\usepackage{graphicx}
+
+%\usepackage{tikz}
+%\usetikzlibrary {arrows.meta}
+%\usepackage{wrapfig}
+%\usepackage{bm}
+
+% ルビを振る
+\usepackage{luatexja-ruby}
+
+%% 核Ker 像Im Hom を定義
+\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+%\newcommand{\Img}{\mathop{\mathrm{Im}}\nolimits}
+\newcommand{\Ran}{\mathop{\mathrm{Ran}}\nolimits}
+%\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+
+%\DeclareMathOperator{\Rot}{rot}
+%\DeclareMathOperator{\Div}{div}
+%\DeclareMathOperator{\Grad}{grad}
+%\DeclareMathOperator{\arcsinh}{arcsinh}
+%\DeclareMathOperator{\arccosh}{arccosh}
+%\DeclareMathOperator{\arctanh}{arctanh}
+
+\usepackage{url}
+
+%\usepackage{listings}
+%
+%\lstset{
+%%プログラム言語(複数の言語に対応，C,C++も可)
+%  language = Python,
+%%  language = Lisp,
+%%  language = C,
+%  %背景色と透過度
+%  %backgroundcolor={\color[gray]{.90}},
+%  %枠外に行った時の自動改行
+%  breaklines = true,
+%  %自動改行後のインデント量(デフォルトでは20[pt])
+%  breakindent = 10pt,
+%  %標準の書体
+%%  basicstyle = \ttfamily\scriptsize,
+%  basicstyle = \ttfamily,
+%  %コメントの書体
+%%  commentstyle = {\itshape \color[cmyk]{1,0.4,1,0}},
+%  %関数名等の色の設定
+%  classoffset = 0,
+%  %キーワード(int, ifなど)の書体
+%%  keywordstyle = {\bfseries \color[cmyk]{0,1,0,0}},
+%  %表示する文字の書体
+%  %stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+%  %枠 "t"は上に線を記載, "T"は上に二重線を記載
+%  %他オプション：leftline，topline，bottomline，lines，single，shadowbox
+%  frame = TBrl,
+%  %frameまでの間隔(行番号とプログラムの間)
+%  framesep = 5pt,
+%  %行番号の位置
+%  numbers = left,
+%  %行番号の間隔
+%  stepnumber = 1,
+%  %行番号の書体
+%%  numberstyle = \tiny,
+%  %タブの大きさ
+%  tabsize = 4,
+%  %キャプションの場所("tb"ならば上下両方に記載)
+%  captionpos = t
+%}
+
+%\usepackage{cancel}
+%\usepackage{bussproofs}
+%\usepackage{proof}
+
+\begin{document}
+
+\hrulefill
+
+$C(K)$は$K$上連続関数全体の集合。
+
+$C_{c}(K)$はサポートがコンパクトな関数の集合
+\begin{equation}
+ C_{c}(K) = \{f\in C(K) \mid \mathrm{supp}\;f がコンパクト\}
+\end{equation}
+
+\textbf{\ruby{Cauchy}{コーシー}列}
+
+点列$\{a_{i}\}_{i\in\mathbb{N}}$がある時点以降、
+差が十分に小さくなること。
+
+
+\textbf{完備}
+
+ノルム空間$X$の任意の\ruby{Cauchy}{コーシー}列が
+$X$の点に収束する時、$X$は完備であるという。
+
+\textbf{\ruby{Banach}{バナッハ}空間}
+
+完備なノルム空間のこと。
+
+\textbf{$L^{p}$空間 (\ruby{Lebesgue}{ルベーグ}空間)}
+
+$(\Omega,\mathcal{B},\mu)$を測度空間、
+$p\in [1,\infty)$とする。
+\begin{equation}
+ L^{p}(\Omega) =
+  \left\{
+   u:\Omega\to\mathbb{C} \; \middle| \; uは可測かつ \int_{\Omega} \lvert u \rvert^{p}\mathrm{d}\mu < \infty
+  \right\}
+\end{equation}
+
+
+
+\textbf{\ruby{Sobolev}{ソボレフ}空間}
+
+$k\in\mathbb{N}_{0}, \; p\in [1,\infty]$
+\begin{equation}
+ C^{k,p}(U) = \{ u\in C^{k}(U) \mid \|u\|_{k,p} < \infty\}
+  , \|u\|_{k,p} = \left(\sum_{\lvert \alpha \rvert \leq k} (\|\partial^{\alpha}u\|_{p})^{p}\right)^{1/p}
+\end{equation}
+
+$C^{k,p}(U)$を完備化した空間をSobolev空間といい
+$W^{k,p}(U)$と表す。
+
+$W^{0,p}(U)=L^{p}(U)$である。
+
+
+
+\textbf{\ruby{Hilbert}{ヒルベルト}空間}
+
+内積空間に内積より定義されるノルムを用いて完備化を行った空間を
+Hilbert空間という。
+
+\begin{equation}
+ C^{k,2}(U) = \left\{ u\in C^{k}(U) \; \middle| \; \sum_{\lvert \alpha \rvert\leq k}\int_{U}\lvert \partial^{\alpha}u(x) \rvert^{2}\mathrm{d}x < \infty \right\}
+\end{equation}
+$C^{k,2}(U)$を完備化して得られるHilbert空間を
+$k$階のSobolev空間といい、$H^{k}(U)$と表す。
+
+\begin{equation}
+ C_{0}^{k}(U) = \{ u\in C^{k}(U) \mid \mathrm{supp}\; u \Subset U\}
+\end{equation}
+$C_{0}^{k}(U)$を完備化した空間を$H_{0}^{k}(U)$と表す。
+
+
+
+\hrulefill
+
+
+\begin{description}
+ \item[1-1]
+            \ruby{Riesz}{リース} の表現定理の証明で、
+            線型汎函数$\phi$の連続性がないと、
+            証明のどこが破綻するのか説明せよ。
+
+            \begin{theo}[Riesz の表現定理]
+             $(H,\langle\cdot,\cdot\rangle)$ を Hilbert 空間とし,
+             $\phi$をその上の連続線型汎関数とすると,
+             ただ一つ$h_{\phi}\in H$が存在して$\phi(x)=\langle x,h_{\phi}\rangle$と表現できる．
+            \end{theo}
+
+            \begin{proof}
+            \begin{enumerate}
+             \item $H = \Ker(\phi) \oplus \Ker(\phi)^{\perp}$
+             \item $x\in H$に対して, \; $x=x_{1}+x_{2} \quad (x_{1}\in\Ker(\phi) , \; x_{2}\in\Ker(\phi)^{\perp})$
+             \item $\phi(x)=\phi(x_{2})$
+             \item $H/\Ker(\phi) \simeq \Ran(\phi)$
+             \item $\dim_{\mathbb{C}}\Ker(\phi)^{\perp} = 1$
+             \item ${}^\exists h\in\Ker(\phi)^{\perp} \; \text{ s.t. } \; x_{2}=\langle x,h \rangle h$
+             \item $\phi(x_{2}) = \langle x,h \rangle \phi(h) = \langle x, \overline{\phi(h)} h \rangle$
+             \item $h_{\phi} = \overline{\phi(h)} h$として存在する。
+            \end{enumerate}
+
+            $\langle x,h_{1} \rangle = \langle x,h_{2} \rangle$とする.
+            $\langle x,h_{1} \rangle - \langle x,h_{2} \rangle = \langle x,h_{1} - h_{2} \rangle=0$とである.
+            ${}^\forall x \in H$に対して$\langle x,h_{1} - h_{2} \rangle=0$であるので,
+            $h_{1}-h_{2}=0$である.
+            \end{proof}
+
+            \dotfill
+
+            上記証明の1～8の内、$\phi$が連続でないとすると、
+            7の$\phi(x_{2}) = \langle x,h \rangle \phi(h)$が成立しない。
+
+            $\phi$に対して$h\in H$が存在するため、
+            $\phi(\alpha)$とした時、
+            $\alpha$によって変化するのは
+            $\langle \alpha,h \rangle$の部分のみである。
+            $\langle \alpha,h \rangle$は連続性を持つため、
+            $\phi$が連続でなければならない。
+
+            \hrulefill
+
+ \item[1-2]
+            \ruby{Poisson}{ポアソン} 方程式の弱解の定義において、
+            $\phi$を動かす範囲は
+            $C_{c}^{\infty}(D)$でも
+            $H_{0}^{1}(D)$でも
+            同値であることを示せ。
+            ただし \ruby{Poincar\'e}{ポアンカレ} の不等式は、
+            $H_{0}^{1}(D)$まで
+            拡張されているとして用いてよい。
+
+
+            \textbf{Poisson方程式($\Delta u = f$)の弱解}
+            
+            $u\in H_{0}^{1}(D)$で、
+            全ての$\phi \in C_{c}^{\infty}(D)$に対し
+            $-\langle u,\phi \rangle _{H^{1}}=\langle f,\phi \rangle_{L^{2}}$
+            を満たすもの
+
+            \dotfill
+
+%            $C_{c}^{\infty}(D)$が$L^{2}(D)$で稠密
+
+            $H_{0}^{1}(D)$は
+            $C_{c}^{\infty}(D)$を完備化したものであるから、
+            $C_{c}^{\infty}(D)$は$H_{0}^{1}(D)$で稠密である。
+
+
+
+            \begin{equation}
+             \langle f,g \rangle_{H^{1}}
+              =\int \langle \nabla f(x), \nabla g(x) \rangle_{\mathbb{R}^{d}} \mathrm{d}x
+              ,\quad
+              \| f \|_{H^{1}}
+              = \left( \int \lvert \nabla f(x) \rvert^{2} \mathrm{d}x \right)^{1/2}
+            \end{equation}
+
+            \begin{equation}
+             \langle f,g \rangle_{L^{2}}
+              =\int f \overline{g} \mathrm{d}\mu
+              ,\quad
+              \| f \|_{L^{2}}
+              =\left(\int \lvert f \rvert^{2} \mathrm{d}\mu \right)^{1/2}
+            \end{equation}
+
+
+
+            $\phi \in H_{0}^{1}(D) \backslash C_{c}^{\infty}(D)$とすると、
+            $C_{c}^{\infty}(D)$のコーシー列$\{\phi_{n}\}_{n\in\mathbb{N}}$が存在し、
+            $\phi = \lim_{n\to\infty}\phi_{n}$である。
+
+            $\phi_{n}\in C_{c}^{\infty}(D)$より
+            $-\langle u,\phi_{n} \rangle _{H^{1}}=\langle f,\phi_{n} \rangle_{L^{2}}$である。
+            \begin{equation}
+             \langle f,\phi_{n} \rangle_{L^{2}}+\langle u,\phi_{n} \rangle _{H^{1}}=0
+            \end{equation}
+
+            この式の極限を取る。
+            \begin{equation}
+             \lim_{n\to0}
+              \left(\langle f,\phi_{n} \rangle_{L^{2}}+\langle u,\phi_{n} \rangle _{H^{1}}\right)
+              =0
+            \end{equation}
+
+
+            極限を分けて考える。
+            \begin{align}
+             \lim_{n\to0} \langle f,\phi_{n} \rangle_{L^{2}}
+             &=
+             \lim_{n\to0} \int f \overline{\phi_{n}} \mathrm{d}\mu
+             = \int f \overline{\lim_{n\to0} \phi_{n}} \mathrm{d}\mu
+             = \int f \overline{\phi} \mathrm{d}\mu
+             = \langle f,\phi \rangle_{L^{2}}\\
+             \lim_{n\to0} \langle u,\phi_{n} \rangle _{H^{1}}
+             &= \lim_{n\to\infty}
+             \int \langle \nabla f(x), \nabla \phi_{n}(x) \rangle_{\mathbb{R}^{d}} \mathrm{d}x\\
+             &= \int \left\langle \nabla f(x), \nabla \left(\lim_{n\to\infty}\phi_{n}(x)\right) \right\rangle_{\mathbb{R}^{d}} \mathrm{d}x\\
+             &=\int \langle \nabla f(x), \nabla \phi(x) \rangle_{\mathbb{R}^{d}} \mathrm{d}x
+             = \langle u,\phi \rangle _{H^{1}}
+            \end{align}
+
+            よって、
+            $\langle f,\phi \rangle_{L^{2}}+\langle u,\phi \rangle _{H^{1}}=0$
+            となり、
+            $-\langle u,\phi \rangle _{H^{1}}=\langle f,\phi \rangle_{L^{2}}$
+            である。
+            
+            逆に
+            $H_{0}^{1}(D)$
+            上で成り立つなら
+            $C_{c}^{\infty}(D) \subset H_{0}^{1}(D)$
+            より
+            $C_{c}^{\infty}(D)$
+            でも成り立つ。
+
+            よって、
+            $C_{c}^{\infty}(D)$でも
+            $H_{0}^{1}(D)$でも
+            同値である。
+
+
+            \hrulefill
+
+
+ \item[1-3]
+            ノルム空間
+            $(X,\|\cdot\|_{X}),\;(Y,\|\cdot\|_{Y})$
+            の間の線型写像
+            $T:X\to Y$
+            が連続であること
+            は、
+            それが0において連続であることと
+            同値であることを示せ
+
+            \dotfill
+
+
+            \hrulefill
+
+ \item[1-4]
+            ノルム空間
+            $(X,\|\cdot\|_{X})$
+            からそれ自身への有界線型作用素 T と自然数 n に対して、
+            $\|T^{n}\|_{op} \leq \|T\|_{op}^{n}$
+            であることを示せ。
+
+
+            \dotfill
+
+
+            \hrulefill
+
+
+ \item[1-5]
+            $(I-(K-K_{f}))^{-1}K_{f}$
+            は有界な有限階作用素であることを示せ。
+
+            \dotfill
+
+
+            \hrulefill
+
+
+\end{description}
+
+\hrulefill
+
+\end{document}
