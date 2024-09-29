@@ -1,0 +1,417 @@
+\documentclass[12pt,b5paper]{ltjsarticle}
+
+%\usepackage[margin=15truemm, top=5truemm, bottom=5truemm]{geometry}
+%\usepackage[margin=10truemm,left=15truemm]{geometry}
+\usepackage[margin=10truemm]{geometry}
+
+\usepackage{amsmath,amssymb}
+%\pagestyle{headings}
+\pagestyle{empty}
+
+%\usepackage{listings,url}
+%\renewcommand{\theenumi}{(\arabic{enumi})}
+
+%\usepackage{graphicx}
+
+%\usepackage{tikz}
+%\usetikzlibrary {arrows.meta}
+%\usepackage{wrapfig}
+\usepackage{bm}
+
+% ルビを振る
+%\usepackage{luatexja-ruby}	% required for `\ruby'
+
+%% 核Ker 像Im Hom を定義
+%\newcommand{\Img}{\mathop{\mathrm{Im}}\nolimits}
+%\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+%\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+
+%\DeclareMathOperator{\Rot}{rot}
+%\DeclareMathOperator{\Div}{div}
+%\DeclareMathOperator{\Grad}{grad}
+%\DeclareMathOperator{\arcsinh}{arcsinh}
+%\DeclareMathOperator{\arccosh}{arccosh}
+%\DeclareMathOperator{\arctanh}{arctanh}
+
+\usepackage{url}
+
+%\usepackage{listings}
+%
+%\lstset{
+%%プログラム言語(複数の言語に対応，C,C++も可)
+%  language = Python,
+%%  language = Lisp,
+%%  language = C,
+%  %背景色と透過度
+%  %backgroundcolor={\color[gray]{.90}},
+%  %枠外に行った時の自動改行
+%  breaklines = true,
+%  %自動改行後のインデント量(デフォルトでは20[pt])
+%  breakindent = 10pt,
+%  %標準の書体
+%%  basicstyle = \ttfamily\scriptsize,
+%  basicstyle = \ttfamily,
+%  %コメントの書体
+%%  commentstyle = {\itshape \color[cmyk]{1,0.4,1,0}},
+%  %関数名等の色の設定
+%  classoffset = 0,
+%  %キーワード(int, ifなど)の書体
+%%  keywordstyle = {\bfseries \color[cmyk]{0,1,0,0}},
+%  %表示する文字の書体
+%  %stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+%  %枠 "t"は上に線を記載, "T"は上に二重線を記載
+%  %他オプション：leftline，topline，bottomline，lines，single，shadowbox
+%  frame = TBrl,
+%  %frameまでの間隔(行番号とプログラムの間)
+%  framesep = 5pt,
+%  %行番号の位置
+%  numbers = left,
+%  %行番号の間隔
+%  stepnumber = 1,
+%  %行番号の書体
+%%  numberstyle = \tiny,
+%  %タブの大きさ
+%  tabsize = 4,
+%  %キャプションの場所("tb"ならば上下両方に記載)
+%  captionpos = t
+%}
+
+%\usepackage{cancel}
+%\usepackage{bussproofs}
+%\usepackage{proof}
+
+
+
+\begin{document}
+
+\hrulefill
+
+$A$を4次正則(可逆)行列とする。
+以下の行列の行列式の値を
+$\det{A}$
+を用いて表せ。
+
+\begin{enumerate}
+ \item ${}^{t}\!A$
+       \quad \dotfill \quad $\det{{}^{t}\!A} = \det{A}$
+ \item $-A$
+       \quad \dotfill \quad $\det{(-A)} = (-1)^{4}\det{A}=\det{A}$
+ \item $2A$
+       \quad \dotfill \quad $\det{(2A)} = 2^{4}\det{A}=16\det{A}$
+ \item $A^{-1}$
+       \quad \dotfill \quad $\det{(A^{-1})} = \frac{1}{\det{A}}$
+ \item $A$の1行目と3行目を入れ替えた行列$B$
+       \quad \dotfill \quad $\det{B} = -\det{A}$
+ \item $A$の2列目に3列目の成分の$-1$倍を足した行列$C$
+       \quad \dotfill \quad $\det{C} = \det{A}$
+ \item $A$の3列目の成分を$5$倍した行列$D$
+       \quad \dotfill \quad $\det{D} = 5\det{A}$
+\end{enumerate}
+
+
+\dotfill
+
+$i,j \in \{1,2,3,4\}$とし、
+行列$A=(a_{ij})$とする。
+
+
+\begin{enumerate}
+ \item
+      正則行列$A$は基本行列($P(i,j),Q(i,j;k),R(i;c)$)の積で表すことができる。
+      これらの行列式は転置行列と同じになる。
+      \begin{equation}
+       \det{P(i,j)} = \det{{}^{t}\!P(i,j)}
+        ,\;
+        \det{Q(i,j;k)} = \det{{}^{t}\!Q(i,j;k)}
+        ,\;
+        \det{R(i;c)} = \det{{}^{t}\!R(i;c)}
+      \end{equation}
+
+      ${}^{t}\!A$は
+      基本行列の転置行列(${}^{t}\!P(i,j),{}^{t}\!Q(i,j;k),{}^{t}\!R(i;c)$)
+      の積で表すことができるが、
+      行列式は一致するので
+      $\det{{}^{t}\!A}=\det{A}$
+      である。
+
+
+ \item
+      $-A$は$A$の全ての成分に$-1$をかけた行列である。
+      つまり、基本行列$R(i;c)$を用いて次のようになる。
+      \begin{equation}
+       -A = R(1;-1)R(2;-1)R(3;-1)R(4;-1)A
+      \end{equation}
+
+      $\det{R(i;-1)}=-1$であるので、
+      \begin{align}
+       \det{(-A)}
+       &=\det{R(1;-1)}\det{R(2;-1)}\det{R(3;-1)}\det{R(4;-1)}\det{A}\\
+       &= (-1)^{4} \det{A} = \det{A}
+      \end{align}
+
+
+ \item
+      $2A$は$A$の全ての成分に$2$をかけた行列である。
+      \begin{equation}
+       2A = R(1;2)R(2;2)R(3;2)R(4;2)A
+      \end{equation}
+
+      $\det{R(i;2)}=2$であるので、
+      \begin{align}
+       \det{(2A)}
+       &=\det{R(1;2)}\det{R(2;2)}\det{R(3;2)}\det{R(4;2)}\det{A}\\
+       &= 2^{4} \det{A} = 16 \det{A}
+      \end{align}
+
+
+ \item
+      $A$が正則行列であれば、
+      $A A^{-1} = E$である。
+
+      \begin{equation}
+       \det{(A A^{-1})}=\det{A}\det{A^{-1}}
+        ,\quad
+        \det{E}=1
+      \end{equation}
+
+      これにより
+      $\det{A}\det{A^{-1}}=1$であるから、
+      $\det{A^{-1}}=\frac{1}{\det{A}}$である。
+
+
+
+ \item
+      $B$は$A$の1行目と3行目を入れ替えた行列であるので、
+      基本行列$P(1,3)$を用いて
+      次のように表せる。
+      \begin{equation}
+       B=P(1,3)A
+      \end{equation}
+
+      $\det{P(1,3)}=-1$であるので、
+      $\det{B}=\det{P(1,3)} \det{A} = -\det{A}$
+      である。
+
+
+ \item
+      $C$は$A$の2列目に3列目の成分の$-1$倍を足した行列であるので、
+      基本行列$Q(2,3;-1)$を用いて次のように表せる。
+      \begin{equation}
+       C=A Q(2,3;-1)
+      \end{equation}
+
+      $\det{Q(2,3;-1)}=1$であるので、
+      $\det{C}=\det{A} \det{Q(2,3;-1)} = \det{A}$
+      である。
+
+
+
+ \item
+      $D$は$A$の3列目の成分を$5$倍した行列であるので、
+      基本行列$R(3;5)$を用いて次のように表せる。
+      \begin{equation}
+       C=A R(3;5)
+      \end{equation}
+
+      $\det{R(3;5)}=5$であるので、
+      $\det{C}=\det{A} \det{R(3;5)} = 5\det{A}$
+      である。
+
+
+
+\end{enumerate}
+
+\dotfill
+
+\textbf{基本行列}
+
+$i\ne j$とする。
+単位行列の$i$行と$j$行を入れ替えた行列を$P(i,j)$、
+単位行列の$(i,j)$成分を$k$に変えた行列を$Q(i,j;k)$とする。
+\begin{equation}
+ P(i,j)=
+  \begin{pmatrix}
+   1 & & & & & & \\
+    & \ddots & & & & & \\
+    & & 0 & \cdots & 1 & & \\
+    & & \vdots & \ddots & \vdots & & \\
+    & & 1 & \cdots & 0 & & \\
+   & & & & & \ddots & \\
+   & & & & & & 1 \\
+  \end{pmatrix}
+  ,\;
+ Q(i,j;k)=
+  \begin{pmatrix}
+   1 & & & & & & \\
+    & \ddots & & & & & \\
+    & & 1 & \cdots & k & & \\
+    & & & \ddots & \vdots & & \\
+    & & & & 1 & & \\
+   & & & & & \ddots & \\
+   & & & & & & 1 \\
+  \end{pmatrix}
+\end{equation}
+
+また、
+単位行列の$i$行目に$c$をかけたものを
+$R(i;c)$とする。
+\begin{equation}
+ R(i;c)=
+  \begin{pmatrix}
+   1 & & & & & & \\
+    & \ddots & & & & & \\
+   & & & c & & & \\
+   & & & & & \ddots & \\
+   & & & & & & 1 \\
+  \end{pmatrix}
+\end{equation}
+
+この3つの行列を基本行列という。
+行列に対して左から基本行列をかけることで
+行についての基本変形を行える。
+右からかけることで列についての基本変形となる。
+
+全ての正則行列はこの3つの行列の積で表すことができる。
+
+
+\dotfill
+
+\textbf{行列式の定義}
+
+成分が一つだけの行列$(c)$の行列式は
+$\det{(c)}=c$である。
+
+n次行列$A=(a_{ij})$における$(i,j)$成分の\textbf{余因子}$A_{ij}$とは、
+$A$の$(i,j)$成分$a_{ij}$を含む行と列を除いてできる
+$n-1$次行列式に$(-1)^{i+j}$をかけたものである。
+例えば、
+$3$次正方行列$A$の余因子$A_{12}$は次のようになる。
+\begin{equation}
+ A=
+  \begin{pmatrix}
+   \alpha & \beta & \gamma \\ \delta & \epsilon & \zeta \\ \eta & \theta & \iota
+   \end{pmatrix}
+   ,\quad
+   A_{12}
+   =(-1)^{1+2} \det{
+  \begin{pmatrix}
+   \delta & \zeta \\ \eta & \iota
+   \end{pmatrix}
+}
+\end{equation}
+
+
+$n$次正方行列$A=(a_{ij})$の行列式は
+余因子を用いて次のように定義する。
+\begin{equation}
+ \det{A} =
+  \sum_{j=1}^{n} a_{ij}A_{ij}
+\end{equation}
+例えば、
+$3$次正方行列$A=(a_{ij})$の行列式$\det{A}$は
+次のようになる。
+\begin{equation}
+ \det{A} = a_{11}A_{11} + a_{12}A_{12} + a_{13}A_{13}
+\end{equation}
+
+
+
+\textbf{行列式の性質}
+
+\begin{enumerate}
+ \item $1$つの行を$k$倍した行列式は、もとの行列式の$k$倍となる
+       \begin{equation}
+        \det
+        \begin{pmatrix}
+         k\alpha & k\beta \\ \gamma & \delta
+        \end{pmatrix}
+        =k
+        \det
+        \begin{pmatrix}
+         \alpha & \beta \\ \gamma & \delta
+        \end{pmatrix}
+       \end{equation}
+
+ \item $2$つの行を入れ替えてできる行列式は、もとの行列式の$-1$倍となる
+       \begin{equation}
+        \det
+        \begin{pmatrix}
+         \alpha & \beta \\ \gamma & \delta
+        \end{pmatrix}
+        =
+        -\det
+        \begin{pmatrix}
+         \gamma & \delta \\
+         \alpha & \beta
+        \end{pmatrix}
+       \end{equation}
+
+ \item 行列式の第$i$行が$\bm{a}_{i}+\bm{b}_{i}$であれば、
+       第$i$行を$\bm{a}_{i},\bm{b}_{i}$にした行列式の和である
+       \begin{equation}
+        \det
+        \begin{pmatrix}
+         \alpha + \epsilon & \beta + \zeta \\ \gamma & \delta
+        \end{pmatrix}
+        =
+        \det
+        \begin{pmatrix}
+         \alpha & \beta \\
+         \gamma & \delta
+        \end{pmatrix}
+       +
+        \det
+        \begin{pmatrix}
+         \epsilon & \zeta \\
+         \gamma & \delta
+        \end{pmatrix}
+       \end{equation}
+
+ \item $1$つの行の$k$倍を他の行に加えてできる行列式は
+       もとの行列式と等しい
+       \begin{equation}
+        \det
+        \begin{pmatrix}
+         \alpha + k\gamma & \beta + k\delta \\ \gamma & \delta
+        \end{pmatrix}
+        =
+        \det
+        \begin{pmatrix}
+         \alpha & \beta \\
+         \gamma & \delta
+        \end{pmatrix}
+       \end{equation}
+
+ \item 1つの行の成分が全て$0$であるなら、行列式は0である
+       \begin{equation}
+        \det
+        \begin{pmatrix}
+         \alpha & \beta \\ 0 & 0
+        \end{pmatrix}
+        =
+        0
+       \end{equation}
+
+\end{enumerate}
+
+上記性質は列に対して行っても成立する
+
+\dotfill
+
+\textbf{記号}
+
+\begin{description}
+ \item[$M(n,\mathbb{K})$]
+            $\mathbb{K}$を成分とする$n$次正方行列の全体
+ \item[$GL(n,\mathbb{K})$]
+            $\mathbb{K}$を成分とする$n$次正則正方行列の全体
+            (\textbf{一般線型群})
+\end{description}
+\begin{equation}
+ GL(n,\mathbb{K}) \subset  M(n,\mathbb{K})
+\end{equation}
+
+
+\hrulefill
+
+\end{document}
