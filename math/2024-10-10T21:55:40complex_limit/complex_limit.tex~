@@ -1,0 +1,529 @@
+\documentclass[12pt,b5paper]{ltjsarticle}
+
+%\usepackage[margin=15truemm, top=5truemm, bottom=5truemm]{geometry}
+%\usepackage[margin=10truemm,left=15truemm]{geometry}
+\usepackage[margin=10truemm]{geometry}
+
+\usepackage{amsmath,amssymb}
+%\pagestyle{headings}
+\pagestyle{empty}
+
+%\usepackage{listings,url}
+
+% 記号変更
+%\renewcommand{\theenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+
+
+%\usepackage{graphicx}
+
+\usepackage{tikz} % draw graphics : TikZ ist kein Zeichenprogramm
+\usetikzlibrary{arrows.meta}
+
+%\usepackage{wrapfig}
+%\usepackage{bm} % ベクトルの矢印
+
+%\usepackage{luatexja-ruby} % ルビを振る
+
+%% 核Ker 像Im Hom を定義
+\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\Img}{\mathop{\mathrm{Img}}\nolimits}
+%\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+
+%\DeclareMathOperator{\Rot}{rot}
+%\DeclareMathOperator{\Div}{div}
+%\DeclareMathOperator{\Grad}{grad}
+%\DeclareMathOperator{\arcsinh}{arcsinh}
+%\DeclareMathOperator{\arccosh}{arccosh}
+%\DeclareMathOperator{\arctanh}{arctanh}
+
+\usepackage{url} % URLの記述
+
+%\usepackage{listings}
+%
+%\lstset{
+%%プログラム言語(複数の言語に対応，C,C++も可)
+%  language = Python,
+%%  language = Lisp,
+%%  language = C,
+%  %背景色と透過度
+%  %backgroundcolor={\color[gray]{.90}},
+%  %枠外に行った時の自動改行
+%  breaklines = true,
+%  %自動改行後のインデント量(デフォルトでは20[pt])
+%  breakindent = 10pt,
+%  %標準の書体
+%%  basicstyle = \ttfamily\scriptsize,
+%  basicstyle = \ttfamily,
+%  %コメントの書体
+%%  commentstyle = {\itshape \color[cmyk]{1,0.4,1,0}},
+%  %関数名等の色の設定
+%  classoffset = 0,
+%  %キーワード(int, ifなど)の書体
+%%  keywordstyle = {\bfseries \color[cmyk]{0,1,0,0}},
+%  %表示する文字の書体
+%  %stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+%  %枠 "t"は上に線を記載, "T"は上に二重線を記載
+%  %他オプション：leftline，topline，bottomline，lines，single，shadowbox
+%  frame = TBrl,
+%  %frameまでの間隔(行番号とプログラムの間)
+%  framesep = 5pt,
+%  %行番号の位置
+%  numbers = left,
+%  %行番号の間隔
+%  stepnumber = 1,
+%  %行番号の書体
+%%  numberstyle = \tiny,
+%  %タブの大きさ
+%  tabsize = 4,
+%  %キャプションの場所("tb"ならば上下両方に記載)
+%  captionpos = t
+%}
+
+%\usepackage{cancel}
+%\usepackage{bussproofs}
+%\usepackage{proof}
+
+\begin{document}
+
+
+\hrulefill
+
+$R$を可換環とする。
+左$R$-加群$M$が与えられたとき、
+$M \times R \to M$を$(x,a) \mapsto ax$で定めると、
+$M$は右$R$-加群にもなることを示せ。
+また、
+$M$は両側$(R,R)$-加群にもなることを示せ。
+
+
+\dotfill
+
+
+\textbf{定義 加群}
+
+加法群$M$に対して、環$R$との演算が次のように定義されているとする。
+\begin{equation}\label{eq:def_module}
+ R \times M \to M, \quad (r,m) \mapsto rm
+\end{equation}
+この演算が次の性質を満たすとき、
+$M$は左$R$-加群であると言う。
+\begin{enumerate}
+ \item $1m=m \quad (1\in R, m\in M)$
+ \item $a(bm)=(ab)m \quad (a,b\in R, m\in M)$
+ \item $(a+b)m=am+bm \quad (a,b\in R, m\in M)$
+ \item $a(m+n)=am+an \quad (a\in R, m,n\in M)$
+\end{enumerate}
+
+式\eqref{eq:def_module}の演算の左右を入れ替えることで
+右$R$-加群が定義できる。
+
+
+\dotfill
+
+環$R$との演算の定義は
+$(x,a) \mapsto ax$であるので、
+加群の定義の性質を確認する。
+
+右からの外部演算を$(x,a)$と書くこととする。
+\begin{itemize}
+ \item
+      $1\in R,\; x\in M$について
+      $(x,1) = 1x$であり、
+      $1x$は左$R$-加群で定義されているので、
+      $(x,1)=1x=x$である。
+ \item
+      $a,b \in R, \; x\in M$について
+      $((x,b),a)=(bx,a)=abx$である。
+      また、
+      $ab$のと演算は
+      $(x,ba)=bax$であるが、
+      $R$は可換環であるので、
+      $(x,ba)=bax=abx$である。
+      つまり、
+      $((x,b),a)=abx=(x,ab)$
+      である。
+ \item
+      $a,b \in R, \; x\in M$について
+      $(x, a+b)=(a+b)x$である。
+      $(x,a)=ax,\; (x,b)=bx$より
+      $(x, a+b)=(a+b)x=ax+bx=(x,a)+(x,b)$
+      である。
+ \item
+      $a \in R, \; x,y\in M$について
+      $(x+y, a)=a(x+y)$であり、
+      $(x,a)=ax,\;(y,a)=ay$であるから
+      $(x+y, a)=a(x+y)=ax+ay=(x,a)+(y,a)$である。
+\end{itemize}
+
+これにより右側からの演算が定義されるので右加群である。
+
+$M$は
+左$R$-加群であり
+右$R$-加群でもある。
+$a,b\in R,\;x\in M$として、
+$a(x,b)$と$(ax,b)$について考える。
+\begin{itemize}
+ \item
+      $a(x,b)=abx$
+ \item
+      $(ax,b)=bax$
+\end{itemize}
+
+$R$が可換環であるので、
+$ba=ab$である。
+その為、
+$a(x,b)=abx=bax=(ax,b)$
+となり、
+両側加群となる。
+
+
+
+
+\hrulefill
+
+$M$を左$R$-加群とし、
+$N \subset M$を左$R$-部分加群とする。
+集合$M / N = \{ x+N \mid x\in M\}$に対して、
+\begin{align}
+ \label{eq:def_operation1}
+ (x+N)+(y+N) &:= (x+y) +N && (x,y\in N)\\
+ \label{eq:def_operation2}
+ a(x+N) &:= ax + N && (a\in R, x\in N)
+\end{align}
+と定めると$M/N$は左$R$-加群になる。
+これを左$R$-剰余加群(quotient module)と呼ぶ。
+
+\begin{enumerate}
+ \item $x + N = y + N \Leftrightarrow x-y \in N \; (x,y\in N)$を示せ。
+ \item 上の2つの演算が well-defined であることを示せ。
+\end{enumerate}
+
+\dotfill
+
+$x,y\in N$とする。
+
+$x+N$は
+$N$の元と$x$との和全体の集合である。
+
+\begin{itemize}
+ \item
+      $x + N = y + N \Rightarrow x-y \in N$
+
+      $x + N = y + N$は
+      $n_{x}, n_{y}\in N$が存在し、
+      $x+n_{x}=y+n_{y}$となることを意味する。
+      両辺を移項することで、
+      $x-y=n_{y}-n_{x}$が得られる。
+
+      $N$は部分加群であるから
+      $n_{y}-n_{x}\in N$であるので、
+      $x-y\in N$である。
+
+ \item
+      $x + N = y + N \Leftarrow x-y \in N$
+
+      $x-y \in N$より
+      ある$n\in N$が存在し、
+      $x-y=n$である。
+      これにより、
+      $x=y+n,\;y=x-n$が得られる。
+
+      任意の$n_{x}\in N$に対して、
+      $x+n_{x} = y+n+n_{x}$である。
+      $n+n_{x} \in N$より
+      $x+n_{x} \in y+N$である。
+      つまり、
+      $x+N \subset y+N$である。
+
+      同様に
+      任意の$n_{y}\in N$に対して、
+      $y+n_{y} = x-n+n_{y}$である為、
+      $y+n_{y} \in x+N$であり、
+      $y+N \subset x+N$である。
+
+      よって、
+      $x+N = y+N$である。
+\end{itemize}
+
+よって、
+$x + N = y + N \Longleftrightarrow x-y \in N$
+である。
+
+
+式\eqref{eq:def_operation1}、
+式\eqref{eq:def_operation2}
+で定義された演算が well-defined を示す。
+
+具体的には
+剰余類$x+N$の代表元の取り方に依存せず演算が成り立つことを確認する。
+
+
+式\eqref{eq:def_operation1}
+$(x+N)+(y+N) := (x+y) +N$
+
+$x,\;y\in M$に対して、
+$x^{\prime},\;y^{\prime} \in M$が存在し、
+$x+N = x^{\prime} +N ,\; y+N = y^{\prime} +N$
+とする。
+次のように演算が定義されている。
+\begin{gather}
+ \label{eq:prof01}
+  (x+N)+(y+N) = (x+y) +N\\
+  \label{eq:prof02}
+  (x^{\prime}+N)+(y^{\prime}+N) = (x^{\prime}+y^{\prime}) +N
+\end{gather}
+先程の証明より次が成り立つ。
+\begin{gather}
+ x+N = x^{\prime} +N \Longleftrightarrow x-x^{\prime} \in N\\
+ y+N = y^{\prime} +N \Longleftrightarrow y-y^{\prime} \in N
+\end{gather}
+
+式\eqref{eq:prof01}と
+式\eqref{eq:prof02}
+の左辺は等しいため、
+右辺が等しくなることを示せばよい。
+
+$N$は部分加群であり、
+$x-x^{\prime} \in N,\;y-y^{\prime} \in N$
+より
+$x-x^{\prime} +  y-y^{\prime} \in N$
+である。
+%つまり、$x+y -x^{\prime}-y^{\prime} \in N$である。
+
+$x^{\prime},\;y^{\prime}$の
+マイナス元が
+$-x^{\prime},\;-y^{\prime}$
+である為、
+$x^{\prime}+y^{\prime}$の
+マイナス元が
+$-x^{\prime}-y^{\prime}$
+である。
+つまり、
+$-(x^{\prime}+y^{\prime})=-x^{\prime}-y^{\prime}$
+である。
+
+この為、
+$x-x^{\prime} +  y-y^{\prime} = (x+y) -(x^{\prime}+y^{\prime}) \in N$
+であり、
+$(x+y)+N =  (x^{\prime}+y^{\prime}) + N$
+であることが言える。
+
+
+
+
+\hrulefill
+
+$M,N$を左$R$-加群とし、
+$f:M\to N$を準同型とする。
+このとき、
+\begin{gather}
+ \Ker{f} := \{ x\in M \mid f(x) = 0\}\\
+ \Img{f} := \{ f(x) \in N \mid x\in M\}
+\end{gather}
+とおき、
+それぞれを
+$f$の核 (kernel)、
+$f$の像 (image)
+と呼ぶ。
+
+\begin{enumerate}
+ \item $\Ker{f}$は$M$の左$R$-部分加群であることを示せ。
+ \item $\Img{f}$は$N$の左$R$-部分加群であることを示せ。
+\end{enumerate}
+
+\dotfill
+
+\begin{enumerate}
+ \item $\Ker{f}$は$M$の左$R$-部分加群であることを示す。
+
+       $x,\;y\in\Ker{f}$とする。
+       \begin{itemize}
+        \item $f(x+y)=f(x)+f(y)=0+0=0$より$x + y\in\Ker{f}$である。
+        \item $f(0)=f(0+0)=f(0)+f(0)$より$f(0)=0$となり、$0\in\Ker{f}$である。
+        \item $f(0)=f(x+(-x))=f(x)+f(-x)$であり、
+              $f(x)=0$より$-x\in\Ker{f}$である。
+       \end{itemize}
+       以上により$\Ker{f}$は加法群である。
+
+       $\Ker{f} \subset M$より、$R$と$\Ker{f}$の演算は$M$の元となる。
+       $r\in R,\; x\in\Ker{f}$とすると、
+       $f(rx)=rf(x)=r0=0$より$rx\in\Ker{f}$である。
+
+       他の性質は$M$は加群であり、
+       $\Ker{f}$は$M$の部分加法群であることから従う。
+
+       よって、$\Ker{f}$は$M$の左$R$-部分加群である。
+
+ \item $\Img{f}$は$N$の左$R$-部分加群であることを示す。
+
+       $x,\;y\in\Img{f}$とする。
+       $x_{0},y_{0}\in M$が存在し、$x=f(x_{0}),y=f(y_{0})$である。
+       \begin{itemize}
+        \item $x+y=f(x_{0})+f(y_{0})=f(x_{0}+y_{0})$より$x + y\in\Img{f}$である。
+        \item $f(0)=f(0+0)=f(0)+f(0)$より$f(0)=0$となり、$0\in\Img{f}$である。
+        \item $0=f(0)=f(x_{0}+(-x_{0}))=f(x_{0})+f(-x_{0})=x+f(-x_{0})$であるため、
+              $-x=f(-x_{0})$より$-x\in\Img{f}$である。
+       \end{itemize}
+       以上により$\Img{f}$は加法群である。
+
+       $\Img{f} \subset N$より、$R$と$\Img{f}$の演算は$N$の元となる。
+       $r\in R,\; x\in\Img{f}$とすると、
+       $rx=rf(x_{0})=f(rx_{0})$であり、
+       $rx_{0}\in M$より$rx\in\Img{f}$である。
+
+       $\Img{f}$は$N$の部分加法群であり、
+       $R$との演算が$N$の中で成り立っている為、
+       その他の性質も従う。
+
+       よって、$\Img{f}$は$N$の左$R$-部分加群である。
+\end{enumerate}
+
+
+
+\hrulefill
+
+\textbf{準同型定理}
+
+$M,N$を左$R$-加群とし、
+$f:M\to N$を準同型とする。
+このとき、
+以下の写像は (well-defined であり)同型写像である。
+\begin{equation}
+ \bar{f} : M/ \Ker{f} \to \Img{f}, \quad x+\Ker{f} \mapsto f(x)
+\end{equation}
+特に、
+$M/\Ker{f} \cong \Img{f}$
+である。
+
+
+この定理を示せ。
+
+\dotfill
+
+写像$f$は$f:M\to\Img{f}$とすると全射である。
+$f=\bar{f}\circ g$となるように
+$g:M\to M/\Ker{f}$とすると$g$も全射である。
+\begin{equation}
+ M \overset{g}{\longrightarrow} M / \Ker{f} \overset{\bar{f}}{\longrightarrow}  \Img{f}
+\end{equation}
+$f=\bar{f}\circ g$であるので、
+$\bar{f}$も全射である。
+
+$x,y\in \Img{f}$が$x=y$とする。
+$x_{0},y_{0}\in M$が存在し、
+$x=f(x_{0}),\;y=f(y_{0})$である。
+
+$x_{0}-y_{0}\in M$であり、
+$f(x_{0}-y_{0})=f(x_{0})+f(-y_{0})=x+(-y)=0$である。
+つまり、
+$x_{0}-y_{0}\in \Ker{f}$である。
+
+$x_{0} +\Ker{f} = y_{0}+\Ker{f}$であることがわかる為、
+$\bar{f}(x_{0}+\Ker{f})=f(x_{0})=x$、
+$\bar{f}(y_{0}+\Ker{f})=f(y_{0})=y$
+から、
+$\bar{f}$は単射であることがわかる。
+
+よって、
+$\bar{f}$は全単射である。
+
+その為、
+$M/\Ker{f}$と$\Img{f}$は同型であり、
+$M/\Ker{f} \cong \Img{f}$である。
+
+
+
+\hrulefill
+
+\begin{itemize}
+ \item
+      空でない集合$X$に対して、
+      $S_{X}$を
+      $X$から$X$への全単射全体の集合とする。
+      写像の合成を演算として
+      $S_{X}$は群をなす。
+
+ \item
+      群$G$と集合$X$に対して、
+      写像$G \times X \to X, \; (g,x) \mapsto gx$
+      が与えられていて、
+      \begin{enumerate}
+       \item $g(hx) = (gh)x \; (g,h \in G, \; x \in X)$
+       \item $ex=x \; (x\in X, e は G の単位元)$
+      \end{enumerate}
+      が成り立つとき、
+      $G$は$X$に左から作用するという。
+\end{itemize}
+
+群$G$が集合$X$に作用することと、
+群の準同型$G\to S_{X}$が存在することが
+同値であることを示せ。
+
+\dotfill
+
+$S_{X}$は$X\to X$の恒等写像を単位元とし、
+$f\in S_{X}$に対し、逆写像$f^{-1}\in S_{X}$を逆元とする。
+
+
+\begin{itemize}
+ \item 群$G$が集合$X$に作用しているとする。
+
+       $g\in G$に対し、$x\mapsto gx$と対応させる写像を$f_{g}$とする。
+       このとき、
+       $f_{g^{-1}}$は$f_{g}$の逆写像となり、
+       $f_{g^{-1}} \circ f_{g} = f_{g} \circ f_{g^{-1}} = id_{X}$である。
+
+       群$G$の元は全て逆元を持つから$f_{g}$は全単射となり、
+       $f_{g}\in S_{X}$となる。
+
+       つまり次のような準同型写像が存在する。
+       \begin{equation}
+        G \to S_{X} , \; g \mapsto f_{g}
+       \end{equation}
+
+ \item 群の準同型$G\to S_{X}$が存在するとする。
+
+       \begin{equation}
+        f: G \to S_{X}, \; g \mapsto f_{g}
+       \end{equation}
+
+       $f_{g}:X\to X$は全単射である。
+       単位元$e\in G$に対し、$f_{e}$は恒等写像であり、
+       $g^{-1}\in G$に対し、$f_{g^{-1}}$は$f_{g}$の逆写像である。
+
+       \begin{equation}
+        G\times X \to X , \; (g,x) \mapsto f_{g}(x)
+       \end{equation}
+       とする。
+
+       $f_{e}$は恒等写像であるので、$f_{e}(x)=x$である。
+
+       $g,h\in G$に対し、
+       準同型$G\to S_{X}$より$f_{g}\circ f_{h}=f_{gh}$である。
+       これにより、
+       \begin{equation}
+        f_{g}(f_{h}(x)) = (f_{g}\circ f_{h})(x)= f_{gh}(x)
+       \end{equation}
+       であるので、
+       群$G$が集合$X$に作用している。
+
+\end{itemize}
+
+これらにより次の2つは同値であることがわかる。
+\begin{itemize}
+ \item 群$G$が集合$X$に作用する
+ \item 群の準同型$G\to S_{X}$が存在する
+\end{itemize}
+
+\hrulefill
+
+
+
+
+
+
+
+
+
+\end{document}
