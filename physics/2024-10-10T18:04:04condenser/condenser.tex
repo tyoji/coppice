@@ -1,0 +1,338 @@
+\documentclass[12pt,b5paper]{ltjsarticle}
+
+%\usepackage[margin=15truemm, top=5truemm, bottom=5truemm]{geometry}
+%\usepackage[margin=10truemm,left=15truemm]{geometry}
+\usepackage[margin=10truemm]{geometry}
+
+\usepackage{amsmath,amssymb}
+%\pagestyle{headings}
+\pagestyle{empty}
+
+%\usepackage{listings,url}
+
+% 記号変更
+%\renewcommand{\theenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+
+
+%\usepackage{graphicx}
+
+\usepackage{tikz} % draw graphics : TikZ ist kein Zeichenprogramm
+\usetikzlibrary{arrows.meta}
+
+
+\usepackage{circuitikz} % 電気回路図用ライブラリ 要Tikzパッケージ
+
+
+
+%\usepackage{wrapfig}
+%\usepackage{bm} % ベクトルの矢印
+
+%\usepackage{luatexja-ruby} % ルビを振る
+
+%% 核Ker 像Im Hom を定義
+\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\Img}{\mathop{\mathrm{Img}}\nolimits}
+%\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+
+%\DeclareMathOperator{\Rot}{rot}
+%\DeclareMathOperator{\Div}{div}
+%\DeclareMathOperator{\Grad}{grad}
+%\DeclareMathOperator{\arcsinh}{arcsinh}
+%\DeclareMathOperator{\arccosh}{arccosh}
+%\DeclareMathOperator{\arctanh}{arctanh}
+
+\usepackage{url} % URLの記述
+
+%\usepackage{listings}
+%
+%\lstset{
+%%プログラム言語(複数の言語に対応，C,C++も可)
+%  language = Python,
+%%  language = Lisp,
+%%  language = C,
+%  %背景色と透過度
+%  %backgroundcolor={\color[gray]{.90}},
+%  %枠外に行った時の自動改行
+%  breaklines = true,
+%  %自動改行後のインデント量(デフォルトでは20[pt])
+%  breakindent = 10pt,
+%  %標準の書体
+%%  basicstyle = \ttfamily\scriptsize,
+%  basicstyle = \ttfamily,
+%  %コメントの書体
+%%  commentstyle = {\itshape \color[cmyk]{1,0.4,1,0}},
+%  %関数名等の色の設定
+%  classoffset = 0,
+%  %キーワード(int, ifなど)の書体
+%%  keywordstyle = {\bfseries \color[cmyk]{0,1,0,0}},
+%  %表示する文字の書体
+%  %stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+%  %枠 "t"は上に線を記載, "T"は上に二重線を記載
+%  %他オプション：leftline，topline，bottomline，lines，single，shadowbox
+%  frame = TBrl,
+%  %frameまでの間隔(行番号とプログラムの間)
+%  framesep = 5pt,
+%  %行番号の位置
+%  numbers = left,
+%  %行番号の間隔
+%  stepnumber = 1,
+%  %行番号の書体
+%%  numberstyle = \tiny,
+%  %タブの大きさ
+%  tabsize = 4,
+%  %キャプションの場所("tb"ならば上下両方に記載)
+%  captionpos = t
+%}
+
+%\usepackage{cancel}
+%\usepackage{bussproofs}
+%\usepackage{proof}
+
+\begin{document}
+
+%%\begin{figure}[htbp]
+%  \begin{center}
+%    \begin{circuitikz}[american currents]
+%     \draw (0,0) to[sV=$E$] (0,2) to[short] (2,2) to[european resistor=$R$] (2,0) to[short] (0,0);
+%      \draw (2,2)
+%      to[short] (4,2)
+%      to[L=$L$] (4,0)
+%      to[short] (2,0);
+%      \draw (4,2)
+%      to[short] (6,2)
+%      to[C=$C$] (6,0)
+%      to[short] (4,0);
+%    \end{circuitikz}
+%%    \caption{RLC並列回路}
+%  \end{center}
+%%\end{figure}
+
+
+\hrulefill
+
+\begin{minipage}[c]{180pt}
+ \begin{center}
+  \begin{circuitikz}[scale=1.0]
+   \draw(0,4) to[battery1] (0,0); % 左側
+   \draw(0,0) to[short,-*] (2,0) to[short] (4,0); % 下部
+   \draw(0,4) to[nos=$S_{1}$,-*] (2,4) to[short] (4,4); % 上部
+   \draw(4,4) to[C=$C_{1}$,-*] (4,2) to[C=$C_{2}$] (4,0); % 右側
+   \draw(2,0) to[european resistor=$R_{2}$,-*] (2,2) to[european resistor=$R_{1}$] (2,4); % 中央縦
+   \draw(2,2) to[nos=$S_{2}$] (4,2); % 横中央
+
+   \node[left] at (-0.5,2) {$E$};
+   \node[above] at (2,4) {$a$};
+   \node[below] at (2,0) {$b$};
+   \node[left] at (2,2) {$c$};
+   \node[right] at (4,2) {$d$};
+  \end{circuitikz}
+%  \caption{電気回路図}
+%  \label{fig:electric_circuit}
+ \end{center}
+\end{minipage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[c]{250pt}
+コンデンサ$C_{1},\;C_{2}$の電気容量を$C,\;2C$、
+抵抗$R_{1},\;R_{2}$の抵抗値を$R,\;2R$とし、
+起電力$E$、スイッチ$S_{1},\;S_{2}$を接続し、%(図\ref{fig:electric_circuit})
+次の操作を行った。
+\begin{enumerate}
+ \item $S_{1}$のみ閉じる
+ \item コンデンサを流れる電流が0になる
+ \item $S_{2}$も閉じる
+ \item 回路を流れる電流は一定となる
+\end{enumerate}
+
+電位は点$b$を基準とする。
+次の値を$C,\;R,\;E$を用いて求めよ。
+\end{minipage}
+
+\dotfill
+\begin{enumerate}
+ \item スイッチ$S_{2}$を閉じる直前の、点$d$の電位$V_{d}$
+ \item スイッチ$S_{2}$を閉じる直前の、抵抗$R_{1}$を流れる電流の大きさ$I$
+ \item スイッチ$S_{2}$を閉じて十分に時間経過したときの、点$d$の電位$V_{d}^{\prime}$
+ \item スイッチ$S_{2}$を閉じてから、
+       十分に時間経過するまでにスイッチ$S_{2}$を通って
+       点$c$から点$d$に向かって流れた電気量$Q$
+\end{enumerate}
+
+その後、スイッチ$S_{2}$を開き、続いてスイッチ$S_{1}$を開いた。
+十分に時間が経過すると回路を流れる電流は0になった。
+
+\begin{enumerate}\setcounter{enumi}{4}
+ \item スイッチ$S_{1}$を開いてから、十分に時間が経過するまでに、
+       点$a$から抵抗$R_{1},\;R_{2}$を通り点$b$に向かって流れた電気量$Q^{\prime}$
+ \item スイッチ$S_{1}$を開いてから、十分に時間が経過するまでに
+       抵抗$R_{2}$で発生するジュール熱$P$
+\end{enumerate}
+
+
+\hrulefill
+
+
+\begin{enumerate}
+ \item
+      コンデンサ$C_{1},\;C_{2}$の電荷は
+      $Q_{1}=C_{1}V_{1},Q_{2}=C_{2}V_{2}$であり、
+      直列のコンデンサの電荷は同じになるため、
+      $C_{1}V_{1}=C_{2}V_{2}$。
+
+      コンデンサ$C_{2}$の電位を$V_{d}$とすると
+      コンデンサ$C_{1}$の電位は$E-V_{d}$であるので、
+      次の式を得る。
+      \begin{equation}
+        C (E-V_{d})=2CV_{d}
+      \end{equation}
+      これを解くと次が得られる。
+      \begin{equation}
+       V_{d}=\frac{1}{3}E
+      \end{equation}
+
+      \dotfill
+ \item
+      抵抗$R_{1},R_{2}$の抵抗値はそれぞれ$R,2R$であり、
+      これが直列に繋がれているので2つの抵抗の合計は$3R$である。
+      電流$I$は電圧$E$を抵抗$3R$で割ることで求まるため次のようになる。
+
+      \begin{equation}
+       I=\frac{E}{3R}
+      \end{equation}
+
+      \dotfill
+ \item
+
+      スイッチ$S_{2}$を閉じ十分に電気を流すと、
+      コンデンサには十分に電気が溜まっている状態となる。
+
+      この場合、
+      $R_{1},C_{1}$の並列接続と$R_{2},C_{2}$の並列接続が直列につながっている。
+      コンデンサには電気が流れない状況であれば
+      それぞれの電圧は$R_{1},R_{2}$に流れる電流から求まる。
+      \begin{equation}
+       V=IR = \frac{E}{3R} \times 2R
+      \end{equation}
+      上記計算により次のように電圧が求まる。
+
+      \begin{equation}
+       V_{d}^{\prime}=\frac{2}{3}E
+      \end{equation}
+
+      \dotfill
+ \item
+      スイッチ$S_{2}$を閉じる前に$C_{1},C_{2}$には電気が蓄えられている。
+      電気容量が$C_{1}$のほうが小さいため、
+      $S_{2}$を閉じたあとは
+      その差分$2C\times E - C\times E$の電気が流れることになる。
+
+      \begin{equation}
+       Q=CE
+      \end{equation}
+
+      \dotfill
+ \item
+
+      コンデンサ$C_{1},C_{2}$の直列接続による静電容量$C$は次の式で求められる。
+      \begin{equation}
+       C=\frac{1}{\frac{1}{C_{1}}+\frac{1}{C_{2}}}=\frac{C_{1}C_{2}}{C_{1}+C_{2}}
+      \end{equation}
+
+      スイッチ$S_{2}$を閉じ、
+      十分に電気を蓄えたあとにスイッチ$S_{2}$を開くと
+      直列接続している$C_{1},C_{2}$の合成静電容量分の電気が蓄電されている状態となる。
+      \begin{equation}
+       \frac{C\times 2C}{C+2C}=\frac{2}{3}C
+      \end{equation}
+
+      スイッチ$S_{1}$を開くと、
+      コンデンサに蓄えた電気が流れる事となるので、
+      電力$E$と静電容量をかけた電気が流れることとなる。
+
+      \begin{equation}
+       Q^{\prime}=\frac{2}{3}CE
+      \end{equation}
+
+      \dotfill
+ \item
+
+      \begin{minipage}[t]{280pt}
+       スイッチ$S_{1},S_{2}$を開いた状態だと、
+       コンデンサ$C_{1},C_{2}$と抵抗$R_{1},R_{2}$を直列に繋いた閉回路
+       となる。
+       
+       2つのコンデンサを合成したものを$C_{1,2}$とすると前問より、
+       合成した電気容量$Q^{\prime}=\frac{2}{3}CE$を
+       $C_{1,2}$が蓄えている状態であるといえる。
+       このとき、直前まで起電力$E$により電気が流れていた為、
+       $C_{1,2}$の電位差は$E$となっている。
+
+       放電により$C_{1,2}$の電気が抵抗$R_{1},R_{2}$に流れる場合の
+       $R_{2}$によって発生するジュール熱を求める。
+      \end{minipage}
+      \quad
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \begin{minipage}[t]{100pt}
+       \begin{center}
+        \begin{circuitikz}[scale=1.0]
+%         \draw(0,4) to[battery1] (0,0); % 左側
+%         \draw(0,0) to[short,-*] (2,0) to[short] (4,0); % 下部
+         \draw (2,0) to[short,*-] (4,0); % 下部
+%         \draw(0,4) to[nos=$S_{1}$,-*] (2,4) to[short] (4,4); % 上部
+         \draw (2,4) to[short,*-] (4,4); % 上部
+%         \draw(4,4) to[C=$C_{1}$,-*] (4,2) to[C=$C_{2}$] (4,0); % 右側
+         \draw(4,4) to[C=$C_{{1},{2}}$] (4,0); % 右側
+         \draw(2,0) to[european resistor=$R_{2}$,-*] (2,2) to[european resistor=$R_{1}$] (2,4); % 中央縦
+%         \draw(2,2) to[nos=$S_{2}$] (4,2); % 上部
+
+%         \node[left] at (-0.5,2) {$E$};
+         \node[above] at (2,4) {$a$};
+         \node[below] at (2,0) {$b$};
+         \node[left] at (2,2) {$c$};
+%         \node[right] at (4,2) {$d$};
+        \end{circuitikz}
+       \end{center}
+      \end{minipage}
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+      \vspace{10pt}
+
+      回路の静電エネルギーは
+      コンデンサの電圧$V$と電気量$Q$を用いて
+      $\frac{1}{2}QV$と表される。
+      回路にはコンデンサが繋がれているだけであるから、
+      2つの抵抗から発生するジュール熱の合計も
+      $\frac{1}{2}QV$と等しくなる。
+
+      今、コンデンサ$C_{1,2}$に蓄えられた電気量は
+      $\frac{2}{3}CE$であり、
+      直前まで繋がれていた起電力$E$がコンデンサの電位差となる。
+      コンデンサの静電エネルギーは次のように求められる。
+      \begin{equation}
+       \frac{1}{2} \times \frac{2}{3}CE \times E
+        = \frac{1}{3}CE^{2}
+        \label{eq:electrostatic_energy}
+      \end{equation}
+
+
+      2つの抵抗値は$R,2R$であり、
+      これにより電圧はそれぞれ$\frac{1}{3},\frac{2}{3}$がかかる。
+
+      $R_{2}$に掛かる電圧が全体の$\frac{2}{3}$であるから
+      式\eqref{eq:electrostatic_energy}
+      の電位差$E$を$\frac{2}{3}E$に置き換えると
+      $R_{2}$で発生するジュール熱が求まる。
+
+      \begin{equation}
+       P
+        = \frac{1}{2} \times \frac{2}{3}CE \times \frac{2}{3}E
+        = \frac{2}{9}CE^{2}
+      \end{equation}
+\end{enumerate}
+
+
+\hrulefill
+
+
+
+\end{document}
