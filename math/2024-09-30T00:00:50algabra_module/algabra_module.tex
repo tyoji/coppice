@@ -4,6 +4,7 @@
 %\usepackage[margin=10truemm,left=15truemm]{geometry}
 \usepackage[margin=10truemm]{geometry}
 
+%\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{amsmath,amssymb}
 %\pagestyle{headings}
 \pagestyle{empty}
@@ -21,7 +22,7 @@
 \usetikzlibrary{arrows.meta}
 
 %\usepackage{wrapfig}
-%\usepackage{bm} % ベクトルの矢印
+\usepackage{bm} % ベクトル表示
 
 %\usepackage{luatexja-ruby} % ルビを振る
 
@@ -518,11 +519,282 @@ $f\in S_{X}$に対し、逆写像$f^{-1}\in S_{X}$を逆元とする。
 
 \hrulefill
 
+\newpage
+
+\hrulefill
+
+\textbf{テンソル積}
+\begin{quotation}
+ $R$を環とし、
+ $M$を右$R$-加群、$N$を左$R$-加群とする。
+ このとき、
+ 次のような加法群$M\otimes_{R}N$を
+ $M$と$N$のテンソル積という。
+ \begin{enumerate}
+  \item
+       \begin{equation}
+        M\otimes_{R}N
+         = \left\{ \sum_{i=1}^{k} m_{i}\otimes n_{i} \; \middle| \;
+            k\geq 1,\; m_{i} \in M,\; n_{i} \in N
+           \right\}
+       \end{equation}
+  \item
+       $m,m^{\prime} \in M,\; n,n^{\prime}\in N,\; r\in R$について
+       次の演算が成り立つ。
+       \begin{itemize}
+        \item $(m+m^{\prime})\otimes n = m\otimes n + m^{\prime}\otimes n$
+        \item $m\otimes (n+n^{\prime}) = m\otimes n + m\otimes n^{\prime}$
+        \item $(mr)\otimes n = m\otimes (rn)$
+       \end{itemize}
+ \end{enumerate}
+\end{quotation}
+
+上記の加法群$M \otimes_{R} N$において、
+$m \otimes 0 = 0\otimes n =0$
+が成り立つことを示せ。
+
+\dotfill
+
+$M\otimes_{R}N$の
+任意の元を取り出す。
+$\alpha\otimes \beta\in M\otimes_{R}N$
+このとき、
+$\alpha \in M,\;\beta \in N$
+である。
+
+$m\otimes 0\in M\otimes_{R}N$との和を考える。
+$m\in M$より$\alpha -m\in M$である。
+これにより次のような計算ができる。
+\begin{align}
+ \alpha\otimes \beta + m\otimes 0
+  &= (\alpha-m +m)\otimes \beta + m\otimes 0\\
+  &= (\alpha-m)\otimes \beta +m\otimes \beta + m\otimes 0\\
+  &= (\alpha-m)\otimes \beta +m\otimes (\beta + 0)\\
+  &= (\alpha-m)\otimes \beta +m\otimes \beta\\
+  &= (\alpha-m +m)\otimes \beta
+  \qquad = \alpha\otimes \beta
+\end{align}
+
+同様に
+$\alpha\otimes \beta + 0\otimes n = \alpha\otimes \beta$
+である。
+
+よって、
+$m\otimes 0,\; 0\otimes n$は零元であり、
+$m\otimes 0 = 0\otimes n =0$となる。
 
 
 
+\hrulefill
+
+\begin{quotation}
+
+ $\mathbb{C}$上のベクトル空間$\mathfrak{g}$に対して、
+ 積$(x,y)\in\mathfrak{g}\times\mathfrak{g}\mapsto [x,y]\in\mathfrak{g}$
+ が定義され、次の3つの性質を満たすとき、
+ $\mathfrak{g}$をリー代数(Lie algebra)という。
+ \begin{description}
+  \item[双線型性]
+             $\alpha,\beta\in\mathbb{C}, x,y,z\in\mathfrak{g}$
+             に対して次の式が成り立つ。
+             \begin{equation}
+              [\alpha x + \beta y, z] = \alpha[x,z]+\beta[y,x]
+               ,\quad
+               [z, \alpha x + \beta y] = \alpha[z,x]+\beta[z,y]
+             \end{equation}
+
+  \item[交代性]
+             ${}^{\forall}x\in\mathfrak{g}$に対して次が成り立つ。
+             \begin{equation}
+              [x,x] = 0
+             \end{equation}
+
+  \item[Jacobi恒等式]
+             ${}^{\forall}x,y,z\in\mathfrak{g}$に対して次が成り立つ。
+             \begin{equation}
+              [ x , [y,z]] + [ y , [z,x]] + [ z , [x,y]] =0
+             \end{equation}
+ \end{description}
+
+\end{quotation}
+
+複素数を成分とする$n$次正方行列全体の集合を
+$\mathrm{Mat}_{n}(\mathbb{C})$と表す。
+
+$X,Y \in \mathrm{Mat}_{n}(\mathbb{C})$に対して、
+演算$[X,Y]=XY-YX$と定めると
+$\mathrm{Mat}_{n}(\mathbb{C})$はリー代数となる。
+これを$\mathfrak{gl}_{n}(\mathbb{C})$と表す。
+
+\begin{equation}
+ \mathfrak{sl}_{n}(\mathbb{C}) :=
+  \{ X\in \mathrm{Mat}_{n}(\mathbb{C}) \mid \mathrm{tr}{X}=0 \}
+  ,\qquad
+  \left[ X,Y \right] := XY - YX
+\end{equation}
+$\mathfrak{sl}_{n}(\mathbb{C})$は
+演算$[X,Y] \in \mathfrak{sl}_{n}(\mathbb{C})$により
+リー代数となる。
+($n$次特殊線形リー代数)
+
+\begin{equation}
+ \mathfrak{o}_{n}(\mathbb{C}) :=
+  \{ X\in \mathrm{Mat}_{n}(\mathbb{C}) \mid {}^{t}{X}=-X \}
+\end{equation}
+($n$次直交リー代数)
+
+\begin{enumerate}
+ \item
+      $\mathfrak{sl}_{n} (\mathbb{C})$は
+      $\mathfrak{gl}_{n} (\mathbb{C})$の
+      イデアルであることを示せ。
+
+ \item
+      $\mathfrak{o}_{n} (\mathbb{C})$は
+      $\mathfrak{gl}_{n} (\mathbb{C})$の
+      イデアルでないことを示せ。
+
+\end{enumerate}
+
+\dotfill
+
+環$R$に対し、$I$がイデアルであるとは、
+部分環$I\subset R$であり、
+$i\in I,\; r\in R \Rightarrow ir \in I$となる
+事をいう。
+
+\begin{enumerate}
+ \item
+      $X,Y \in \mathfrak{sl}_{n}(\mathbb{C})$とする。
+
+      $\mathrm{tr}{X}=\mathrm{tr}{Y}=0$より
+      $\mathrm{tr}{(X+Y)}=\mathrm{tr}{X}+\mathrm{tr}{Y}=0$であるので、
+      $X+Y \in \mathfrak{sl}_{n}(\mathbb{C})$である。
+
+      $A \in\mathfrak{sl}_{n}(\mathbb{C})$対して、
+      $[A,X]$について考える。
+      $\mathrm{tr}{AX}=\mathrm{tr}{XA}$より
+      $\mathrm{tr}{AX}-\mathrm{tr}{XA}=0$であるから
+      $\mathrm{tr}{(AX-XA)}=0$となり
+      $[A,X] \in \mathfrak{sl}_{n}(\mathbb{C})$
+      である。
+
+      よって、
+      $\mathfrak{sl}_{n}(\mathbb{C})$は
+      $\mathfrak{gl}_{n}(\mathbb{C})$のイデアルである。
+
+ \item
+      $X\in \mathfrak{o}_{n}(\mathbb{C}),\; A\in\mathfrak{gl}_{n}(\mathbb{C})$
+      とする。
+      定義から${}^{t}X=-X$である。
+
+      $[A,X],\;{}^{t}[A,X]$を考える。
+      \begin{equation}
+       [A,X] = AX+{}^{t}XA
+        ,\quad
+       {}^{t}[A,X] = {}^{t}X{}^{t}A+{}^{t}AX
+      \end{equation}
+
+      和${}^{t}[A,X]+[A,X]$が$0$であれば、
+      $[A,X]\in \mathfrak{o}_{n}(\mathbb{C})$
+      である。
+      \begin{align}
+       {}^{t}[A,X] + [A,X]
+       &= {}^{t}X{}^{t}A+{}^{t}AX + AX+{}^{t}XA\\
+        &={}^{t}X ({}^{t}A+A)+({}^{t}A + A)X\\
+        &=-X ({}^{t}A+A)+({}^{t}A + A)X
+      \end{align}
+
+      交代行列$X$と対称行列${}^{t}A + A$の積は一般には一致しない。
+      $X ({}^{t}A+A) \ne ({}^{t}A + A)X$
+
+      つまり、
+      ${}^{t}[A,X]+[A,X] \ne 0$となる
+      $X\in \mathfrak{o}_{n}(\mathbb{C}),\; A\in\mathfrak{gl}_{n}(\mathbb{C})$
+      が存在するため、
+      $\mathfrak{o}_{n}(\mathbb{C})$は
+      $\mathfrak{gl}_{n}(\mathbb{C})$のイデアルではない。
+
+\end{enumerate}
 
 
+
+\hrulefill
+
+% 同時対角化可能性
+
+$V$を有限次元のベクトル空間とする。
+
+$f_{1},f_{2},\dots,f_{n} \in \mathrm{End}_{\mathbb{C}}(V)$が
+$V$上で対角化可能で、
+かつ、全ての$1\leq k,m \leq n$について
+$f_{k}f_{m}=f_{m}f_{k}$が成り立つなら
+$f_{1},f_{2},\dots,f_{n}$は
+$V$上で同時対角化可能であることを示せ。
+
+\begin{quote}
+ 同時対角化可能とは、
+ 「$f_{1},f_{2},\dots,f_{n}$の表現行列が
+ 同時に対角行列になるような
+ $V$の基底が存在する」
+ ことをいう。
+\end{quote}
+
+\dotfill
+
+$f_{k}f_{m}=f_{m}f_{k}$であるなら
+$f_{k},f_{m}$の表現行列$M_{k},M_{m}$に対して、
+$M_{k}M_{m}=M_{m}M_{k}$である。
+
+$f_{k},\;f_{m}$は対角化可能であるから、
+$M_{k},M_{m}$は対角化可能である。
+
+
+$M_{k}$の固有値を$\lambda_{k}$、
+固有ベクトルを$\bm{v}_{k}$とすると、
+次のような計算ができる。
+\begin{equation}
+ M_{k}(M_{m}\bm{v}_{k})
+  = M_{m}M_{k}\bm{v}_{k}
+  = M_{m}\lambda_{k}\bm{v}_{k}
+  = \lambda_{k}(M_{m}\bm{v}_{k})
+\end{equation}
+
+これにより$M_{m}\bm{v}_{k}$も
+$M_{k}$の固有値$\lambda_{k}$の固有ベクトルである。
+
+固有値$\lambda_{k}$の固有空間を$V_{k}$とする。
+$V_{k}$は$\mathbb{C}$上のベクトル空間$V$の部分空間であり、
+次のような集合である。
+\begin{equation}
+ V_{k}=\{ \bm{v}\in \mathbb{C}^{n} \mid M_{k}\bm{v} = \lambda_{k}\bm{v} \}
+\end{equation}
+つまり、$M_{m}\bm{v}_{k} \in V_{k}$ということであり、
+$M_{m} V_{k} \subset V_{k}$というを意味する。
+
+同様の議論から、
+正方行列$M_{k}$の全ての固有空間について
+$M_{m} V_{k} \subset V_{k}$が成り立つ。
+
+$M_{k}$と
+$M_{m}$を入れ替えることにより、
+正方行列$M_{m}$の全ての固有空間について
+$M_{k} V_{m} \subset V_{m}$が成り立つ。
+
+これにより
+$M_{k}$と
+$M_{m}$の固有空間は一致する。
+その為、固有空間の基底を並べた行列を用いることで
+$M_{k},M_{m}$の対角化が可能である。
+
+
+$f_{k}f_{m}=f_{m}f_{k}$を満たせば同時対角化可能となるので、
+$f_{1},f_{2},\dots,f_{n}$は
+$V$上で同時対角化可能である。
+
+
+
+\hrulefill
 
 
 
