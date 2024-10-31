@@ -1,0 +1,241 @@
+\documentclass[12pt,b5paper]{ltjsarticle}
+
+%\usepackage[margin=15truemm, top=5truemm, bottom=5truemm]{geometry}
+%\usepackage[margin=10truemm,left=15truemm]{geometry}
+\usepackage[margin=10truemm]{geometry}
+
+\usepackage{amsmath,amssymb}
+%\pagestyle{headings}
+\pagestyle{empty}
+
+%\usepackage{listings,url}
+
+% 記号変更
+%\renewcommand{\theenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+
+
+%\usepackage{graphicx}
+
+%\usepackage{tikz} % draw graphics : TikZ ist kein Zeichenprogramm
+%\usetikzlibrary{arrows.meta}
+
+%\usepackage{wrapfig}
+%\usepackage{bm} % ベクトルの矢印
+
+%\usepackage{luatexja-ruby} % ルビを振る
+
+%% 核Ker 像Im Hom を定義
+\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\Img}{\mathop{\mathrm{Img}}\nolimits}
+%\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+
+%\DeclareMathOperator{\Rot}{rot}
+%\DeclareMathOperator{\Div}{div}
+%\DeclareMathOperator{\Grad}{grad}
+%\DeclareMathOperator{\arcsinh}{arcsinh}
+%\DeclareMathOperator{\arccosh}{arccosh}
+%\DeclareMathOperator{\arctanh}{arctanh}
+
+\usepackage{url} % URLの記述
+
+%\usepackage{listings}
+%
+%\lstset{
+%%プログラム言語(複数の言語に対応，C,C++も可)
+%  language = Python,
+%%  language = Lisp,
+%%  language = C,
+%  %背景色と透過度
+%  %backgroundcolor={\color[gray]{.90}},
+%  %枠外に行った時の自動改行
+%  breaklines = true,
+%  %自動改行後のインデント量(デフォルトでは20[pt])
+%  breakindent = 10pt,
+%  %標準の書体
+%%  basicstyle = \ttfamily\scriptsize,
+%  basicstyle = \ttfamily,
+%  %コメントの書体
+%%  commentstyle = {\itshape \color[cmyk]{1,0.4,1,0}},
+%  %関数名等の色の設定
+%  classoffset = 0,
+%  %キーワード(int, ifなど)の書体
+%%  keywordstyle = {\bfseries \color[cmyk]{0,1,0,0}},
+%  %表示する文字の書体
+%  %stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+%  %枠 "t"は上に線を記載, "T"は上に二重線を記載
+%  %他オプション：leftline，topline，bottomline，lines，single，shadowbox
+%  frame = TBrl,
+%  %frameまでの間隔(行番号とプログラムの間)
+%  framesep = 5pt,
+%  %行番号の位置
+%  numbers = left,
+%  %行番号の間隔
+%  stepnumber = 1,
+%  %行番号の書体
+%%  numberstyle = \tiny,
+%  %タブの大きさ
+%  tabsize = 4,
+%  %キャプションの場所("tb"ならば上下両方に記載)
+%  captionpos = t
+%}
+
+%\usepackage{cancel}
+%\usepackage{bussproofs}
+%\usepackage{proof}
+
+\begin{document}
+
+
+\hrulefill
+
+$n\in \mathbb{N} =\{ n\in\mathbb{Z} \mid n>0 \}$
+\begin{enumerate}
+ \item
+      恒等式$(n^{2}+1) - (n+2)(n-2) = 5$を利用し、
+      $n+2$と$n^{2}+1$の公約数は
+      1 または 5 に限ることを示せ。
+
+      \dotfill
+
+      $n+2$と$n^{2}+1$の公約数を$g$とする。
+      このとき、
+      $1\leq g \leq \min\{n+2,n^{2}+1\}$
+      である。
+
+      $m_{n+2},\;m_{n^{2}+1} \in \mathbb{N}$が存在し、
+      $n+2=gm_{n+2},\;n^{2}+1=gm_{n^{2}+1}$
+      と書ける。
+
+      $(n^{2}+1) - (n+2)(n-2) = 5$より、
+      \begin{align}
+       n^{2}+1
+       &= (n+2)(n-2) + 5\\
+       &= gm_{n+2}(n-2) + 5
+      \end{align}
+      
+      $g$は$n^{2}+1$の約数でもあるので、
+      右辺$gm_{n+2}(n-2) + 5$の約数でもある。
+      よって、$g$は$5$の約数でなければならず、
+      $g=1$または$g=5$であることとなる。
+
+
+      \hrulefill
+
+ \item
+      $n+2$と$n^{2}+1$が
+      1以外に公約数を持つような自然数$n$をすべて求めよ。
+
+      \dotfill
+
+      $n+2$と$n^{2}+1$の公約数は$1$と$5$以外になく、
+      1以外に公約数を持つということは
+      最大公約数が 5 であるということである。
+      そこで、$k\in\mathbb{N}$として、
+      $n+2=5k$とする。
+      これにより、
+      $n=5k-2$である。
+
+      これを$n^{2}+1$に代入する。
+      \begin{equation}
+       n^{2}+1
+        = (5k-2)^{2}+1
+        = 25k^{2} -20k +5
+      \end{equation}
+
+      よって、
+      $n+2=5k \; (k\in\mathbb{N})$
+      のとき、
+      公約数5を持つ。
+
+      \hrulefill
+
+ \item
+      $2n+1$と$n^{2}+1$が
+      1以外に公約数を持つような自然数$n$をすべて求めよ。
+
+      \dotfill
+
+      $2n+1$は奇数であるので、$n^{2}+1$との公約数は奇数のみである。
+
+      $n^{2}+1$は次のように変形できる。
+      \begin{gather}
+       n^{2}+1
+        = \left( 2n+1 \right) \left( \frac{1}{2}n-\frac{1}{4} \right) +\frac{5}{4}\\
+       4(n^{2}+1)
+       = ( 2n+1 ) ( 2n-1 ) +5
+      \end{gather}
+
+      $2n+1$と$n^{2}+1$の公約数を$c$とする。
+      $4(n^{2}+1)=( 2n+1 ) ( 2n-1 ) +5$より、
+      $c$は右辺を割り切る数であり、
+      $c$は$2n+1$を割り切るから
+      $5$も割り切る数ということになる。
+
+      よって、$c=1$または$c=5$ということになる。
+
+      $2n+1 =5k \; (k\in\mathbb{N})$と置き、
+      $n^{2}+1$を計算する。
+      \begin{equation}
+       n^{2}+1
+        = \left( \frac{5k-1}{2} \right)^{2}+1
+        = \frac{5}{4}(5k^{2}-2k+1)
+      \end{equation}
+
+      $5k^{2}-2k+1$が$4$で割り切れれば、
+      $n^{2}+1$は$5$で割り切れる自然数となる。
+
+      \begin{equation}
+       5k^{2}-2k+1
+        =4k^{2} + k^{2}-2k+1
+        =4k^{2} + (k-1)^{2}
+      \end{equation}
+
+      上記式より、
+      $5k^{2}-2k+1$が$4$で割り切れるためには
+      $k-1$が偶数であればよい。
+
+      $k-1=2k^{\prime}$とすれば、
+      $2n+1=5(2k^{\prime}+1)$から
+      $n=5k^{\prime} + 2$となる。
+      $k\in\mathbb{N}$であるので、
+      $k^{\prime}=0,1,2,\dots$である。
+%      \begin{align}
+%       n^{2}+1
+%       &= \frac{5}{4}(5k^{2}-2k+1)
+%       = \frac{5}{4}(4k^{2} + (k-1)^{2})\\
+%       &= \frac{5}{4}(4(2k^{\prime}+1)^{2} + (2k^{\prime})^{2})
+%       = 5(2k^{\prime}+1)^{2} + 5(k^{\prime})^{2}
+%      \end{align}
+
+      $2n+1,\; n^{2}+1$を確認すると
+      次のように$5$の倍数であることがわかる。
+      \begin{align}
+       2n+1 &= 5(2k^{\prime} +1)\\
+       n^{2}+1 &= (5k^{\prime}+2)^{2}+1
+       = 5( 5(k^{\prime})^{2} +4k^{\prime} +1)
+      \end{align}
+
+      よって、
+      $1$以外に公約数を持つのは次の数のときである。
+      \begin{equation}
+       n= 5m +2 \quad (m\in\mathbb{N}_{0}=\mathbb{N} \cup  \{0\})
+      \end{equation}
+
+
+      \hrulefill
+
+\end{enumerate}
+
+
+\hrulefill
+
+
+
+
+
+
+
+
+
+\end{document}
